@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { TextInput, AppRegistry, Button, StyleSheet, Text, View, TouchableHighlight, Image, AsyncStorage, ScrollView } from 'react-native';
+import { TextInput, AppRegistry, Button, StyleSheet, Text, View, TouchableHighlight, Image, AsyncStorage, ScrollView, Animated, Easing } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import style from '../styles/stylecomp.js';
 import { Font } from 'expo';
+
+import axios from 'axios';
 
 export default class Login extends Component {
 
@@ -21,21 +23,26 @@ export default class Login extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  async componentDidMount() {
-    await Font.loadAsync ({
-      'MuktaMalar-Bold':
-      require('../Assets/Fonts/MuktaMalar-Bold.ttf'),
-      'MuktaMalar-Medium':
-      require('../Assets/Fonts/MuktaMalar-Medium.ttf'),
-      'MuktaMalar-Regular':
-      require('../Assets/Fonts/MuktaMalar-Regular.ttf'),
-      'Rubik-Medium':
-      require('../Assets/Fonts/Rubik-Medium.ttf'),
-      'Rubik-Regular':
-      require('../Assets/Fonts/Rubik-Regular.ttf')
-    });
-    this.setState({ fontLoaded: true })
-  }
+  // componentDidMount() {
+  //   axios.get('http://localhost:3200/users')
+  //   .then((res) => console.log(res))
+  // }
+
+  // async componentDidMount() {
+  //   await Font.loadAsync ({
+  //     'MuktaMalar-Bold':
+  //     require('../Assets/Fonts/MuktaMalar-Bold.ttf'),
+  //     'MuktaMalar-Medium':
+  //     require('../Assets/Fonts/MuktaMalar-Medium.ttf'),
+  //     'MuktaMalar-Regular':
+  //     require('../Assets/Fonts/MuktaMalar-Regular.ttf'),
+  //     'Rubik-Medium':
+  //     require('../Assets/Fonts/Rubik-Medium.ttf'),
+  //     'Rubik-Regular':
+  //     require('../Assets/Fonts/Rubik-Regular.ttf')
+  //   });
+  //   this.setState({ fontLoaded: true })
+  // }
 
   // async onSubmit () {
   //   let response = await fetch('http://localhost:3200/', {
@@ -83,16 +90,26 @@ export default class Login extends Component {
     //   });
     // }
 
-    onSubmit = async () => {
-      console.log(this.state);
-        let response = await fetch('http://localhost:3200/users/new', {
+
+    async onSubmit () {
+      // console.log(this.state);
+      try {
+        let response = await fetch('https://bottles99-api.herokuapp.com/users/new', {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json',
             'Accept': 'application/json',
+            'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ user_name: this.state.user_name, first_name: this.state.first_name, last_name: this.state.last_name })
+          body: JSON.stringify({ user_name: this.state.user_name, first_name: this.state.first_name, last_name: this.state.last_name, password: this.state.password
+          }),
         })
+
+        console.log('response', response);
+      }
+      catch(e){
+          console.log(e, 'there was an error');
+      }
+        this.props.navigation.navigate('Main', {});
         // .then(() => this.setState({ newAmount: 0 }));
       }
 
@@ -100,10 +117,10 @@ export default class Login extends Component {
       return (
         // <View style = {style.container}>
       // {this.state.fontLoaded ? (
-      <View style = {{backgroundColor: '#FFDF64'}}>
-        <View style = {{backgroundColor: "transparent", top: 50}}>
+      <View style = {{alignItems: 'center', backgroundColor: '#FFDF64', flex: 1}}>
+        <View style = {{backgroundColor: "transparent", flex: 1, top: 50}}>
           <Text style = {{color: 'black', fontSize: 36, marginTop: 5, textAlign: 'center'}}>99 BOTTLES</Text>
-          <Image source = {require('../styles/images/beermug2.png')} style = {{marginBottom: 32, position: 'relative'}}></Image>
+          <Image source = {require('../styles/images/beermug2.png')} style = {{alignItems: 'center', marginBottom: 32, position: 'relative'}}></Image>
 
           <Text style = {{color:'black', fontSize: 23, textAlign: 'center', marginBottom: 23}}>Please Login or Create an Account</Text>
 
@@ -117,7 +134,7 @@ export default class Login extends Component {
             value = {this.state.password}
             style = {style.form}
             onChangeText = {(value) =>
-            this.setState({hashed_password: value.trim()})}
+            this.setState({password: value.trim()})}
             placeholder = 'Password'
             secrureTextEntry = {false} />
             <TouchableHighlight onPress = {this.onSubmit}>
@@ -149,7 +166,7 @@ export default class Login extends Component {
             value = {this.state.password}
             style = {style.form}
             onChangeText = {(value) =>
-            this.setState({hashed_password: value.trim()})}
+            this.setState({password: value.trim()})}
             placeholder = 'Password'
             secrureTextEntry = {false} />
             <TouchableHighlight onPress = {this.onSubmit} >

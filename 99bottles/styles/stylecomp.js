@@ -5,7 +5,7 @@ export default StyleSheet.create({
 buttonStyle:{
     width: 175,
     height:32,
-    backgroundColor: '#FFDF64',
+    backgroundColor: '#D1B752',
     alignItems: 'center',
     justifyContent: 'center',
     borderColor: "grey",
@@ -16,12 +16,21 @@ buttonStyle:{
     marginLeft: 4
   },
 
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: 20,
+    paddingBottom: 100
+  },
+
   form: {
     height:40,
     width: 250,
     padding: 10,
     marginBottom: 4,
     backgroundColor: '#FFEDAA',
+    alignItems: 'center',
     justifyContent: 'center'
   },
 
