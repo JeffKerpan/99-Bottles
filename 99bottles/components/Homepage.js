@@ -21,15 +21,16 @@ export default class HomePage extends React.Component {
   }
 
   async componentDidMount() {
-    await Font.loadAsync({
-      'MuktaMalar-Bold': require('../Assets/Fonts/MuktaMalar-Bold.ttf'),
-      'MuktaMalar-Medium': require('../Assets/Fonts/MuktaMalar-Medium.ttf'),
-      'MuktaMalar-Regular': require('../Assets/Fonts/MuktaMalar-Regular.ttf'),
-      'MuktaMalar-SemiBold': require('../Assets/Fonts/MuktaMalar-SemiBold.ttf'),
-      'Rubik-Medium': require('../Assets/Fonts/Rubik-Medium.ttf'),
-      'Rubik-Regular': require('../Assets/Fonts/Rubik-Regular.ttf')
-    });
-    this.setState({ fontLoaded: true }, async() =>{
+  //   await Font.loadAsync({
+  //     'MuktaMalar-Bold': require('../Assets/Fonts/MuktaMalar-Bold.ttf'),
+  //     'MuktaMalar-Medium': require('../Assets/Fonts/MuktaMalar-Medium.ttf'),
+  //     'MuktaMalar-Regular': require('../Assets/Fonts/MuktaMalar-Regular.ttf'),
+  //     'MuktaMalar-SemiBold': require('../Assets/Fonts/MuktaMalar-SemiBold.ttf'),
+  //     'Rubik-Medium': require('../Assets/Fonts/Rubik-Medium.ttf'),
+  //     'Rubik-Regular': require('../Assets/Fonts/Rubik-Regular.ttf')
+  //   });
+    this.setState({ fontLoaded: true },
+  async() =>{
       //DO I NEED THIS fadeIn
       // this.fadeIn()
       try {
@@ -72,17 +73,17 @@ export default class HomePage extends React.Component {
         password: this.state.password
       }),
     })
-    let jsonResponse = await response.json()
-    this.setState({id:jsonResponse[0].id}, async() =>{
-      let userID = this.state.id.toString()
-      try {
-        await AsyncStorage.setItem('@UserId:', userId);
-      } catch (error) {
-        console.log(error);
-      }
-      this.props.navigation.navigate('Main', {
-        userId: this.state.id})
-      });
+    // let jsonResponse = await response.json()
+    // this.setState({id:jsonResponse[0].id}, async() =>{
+    //   let userID = this.state.id.toString()
+    //   try {
+    //     await AsyncStorage.setItem('@UserId:', userId);
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    //   this.props.navigation.navigate('Main', {
+    //     userId: this.state.id})
+    //   });
     // })
   }
 
