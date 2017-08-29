@@ -89,7 +89,17 @@ export default class HomePage extends React.Component {
 
   render() {
     return (
-      <Text>Hello Sol!</Text>
+      // <View>
+      <Text style = {{alignItems: 'center', backgroundColor: '#FFDF64', flex: 1, marginTop: 105}}>Hello Sol!</Text>
+
+      // <TouchableHighlight onPress{() => {this.props.navigation.navigate('Login')}}>
+      //   <View style = {style.buttonStyle}>
+          // <Text style = {{color: 'black'}}>
+      //     BACK
+          // </Text>
+      //   </View>
+      // </TouchableHightlight>
+      // </View>
     );
   }
 

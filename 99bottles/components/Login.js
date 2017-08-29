@@ -136,7 +136,7 @@ export default class Login extends Component {
             onChangeText = {(value) =>
             this.setState({password: value.trim()})}
             placeholder = 'Password'
-            secrureTextEntry = {false} />
+            secrureTextEntry = {true} />
             <TouchableHighlight onPress = {this.onSubmit}>
               <View style = {style.buttonStyle} >
                 <Text style = {{color: 'black'}} >
@@ -168,7 +168,7 @@ export default class Login extends Component {
             onChangeText = {(value) =>
             this.setState({password: value.trim()})}
             placeholder = 'Password'
-            secrureTextEntry = {false} />
+            secrureTextEntry = {true} />
             <TouchableHighlight onPress = {this.onSubmit} >
               <View style = {style.buttonStyle} >
                 <Text style = {{color: 'black'}} >
