@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { TextInput, AppRegistry, Button, StyleSheet, Text, View, TouchableHighlight, Image, AsyncStorage, ScrollView, Animated, Easing } from 'react-native';
+import { TextInput, AppRegistry, Button, StyleSheet, Text, View, TouchableHighlight, TouchableOpacity, Image, AsyncStorage, ScrollView, Animated, Easing } from 'react-native';
+
 import { StackNavigator } from 'react-navigation';
 import style from '../styles/stylecomp.js';
 import { Font } from 'expo';
@@ -18,7 +19,13 @@ export default class Login extends Component {
       last_name: "",
       user_name: "",
       password: "",
-      fontLoaded: false
+      fontLoaded: false,
+      sign_up: {
+        user_name: "",
+        password: ""
+      },
+      login: null,
+
     }
     this.onSubmit = this.onSubmit.bind(this);
   }
@@ -100,18 +107,31 @@ export default class Login extends Component {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ user_name: this.state.user_name, first_name: this.state.first_name, last_name: this.state.last_name, password: this.state.password
+          body: JSON.stringify({ user_name: this.state.sign_up.user_name, first_name: this.state.first_name, last_name: this.state.last_name, password: this.state.sign_up.password
           }),
         })
+        .then((response) => response.json())
+        .then(cleanRes => cleanRes)
 
-        console.log('response', response);
+        AsyncStorage.setItem('auth', JSON.stringify(response[0]), () => this.props.navigation.navigate('Main', {}))
+
+
       }
       catch(e){
           console.log(e, 'there was an error');
       }
-        this.props.navigation.navigate('Main', {});
-        // .then(() => this.setState({ newAmount: 0 }));
+      // let jsonResponse = await response.json()
+      // this.setState({id:jsonResponse[0].id}, async() => {
+      //   let userId = this.state.id.toString()
+      //   try {
+      //     await AsyncStorage.setItem('@UserId:key', userId);
+      //   } catch (errorAsyncStorage) {
+      //     console.log(errorAsyncStorage);
+      //   }
+      // });
+        // .then(() => this.setState({  }));
       }
+      // console.log(this.state.login);
 
     render() {
       return (
@@ -137,13 +157,13 @@ export default class Login extends Component {
             this.setState({password: value.trim()})}
             placeholder = 'Password'
             secrureTextEntry = {true} />
-            <TouchableHighlight onPress = {this.onSubmit}>
+            <TouchableOpacity onPress = {this.onSubmit}>
               <View style = {style.buttonStyle} >
                 <Text style = {{color: 'black'}} >
                 Log In
                 </Text>
               </View>
-            </TouchableHighlight>
+            </TouchableOpacity>
           <TextInput
             value={this.state.first_name}
             style = {style.form}
@@ -157,25 +177,25 @@ export default class Login extends Component {
             this.setState({last_name: value.trim()})}
             placeholder = 'Lastname' />
           <TextInput
-            value = {this.state.user_name}
+            value = {this.state.sign_up.user_name}
             style = {style.form}
             onChangeText = {(value) =>
-            this.setState({user_name: value.trim()})}
+            this.setState({sign_up: {user_name: value.trim(), password: this.state.sign_up.password}})}
             placeholder = 'Username' />
           <TextInput
-            value = {this.state.password}
+            value = {this.state.sign_up.password}
             style = {style.form}
             onChangeText = {(value) =>
-            this.setState({password: value.trim()})}
+            this.setState({sign_up: {password: value.trim(), user_name: this.state.sign_up.user_name}})}
             placeholder = 'Password'
             secrureTextEntry = {true} />
-            <TouchableHighlight onPress = {this.onSubmit} >
+            <TouchableOpacity onPress = {this.onSubmit} >
               <View style = {style.buttonStyle} >
                 <Text style = {{color: 'black'}} >
                 Sign Up
                 </Text>
               </View>
-            </TouchableHighlight>
+            </TouchableOpacity>
 
         </View>
       </View>
