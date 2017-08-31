@@ -11,7 +11,7 @@ export default class HomePage extends React.Component {
   constructor () {
     super();
     this.state = {
-      id: 0,
+      id: 1,
       user_name: "",
       number_beers: 0,
       location_name: "",
@@ -19,6 +19,7 @@ export default class HomePage extends React.Component {
       first_name: "",
       last_name: "",
       friend_name: "",
+      beers: [],
       // password: "",
       fontLoaded: false,
     }
@@ -36,6 +37,28 @@ export default class HomePage extends React.Component {
     // } catch (error) {
     //   console.log(error);
     // }
+  }
+
+  componentDidMount() {
+    fetch(`http://localhost:3200/users/${this.state.id}`, {
+      method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(res => {
+      console.log('res');
+      // console.log('res', res);
+      this.setState({beers:res})
+      // console.log(this.state.beers, 'this.state.beers');
+  })
+}
+
+  yourBeers (array) {
+
+
   }
 
   // async componentDidMount() {
@@ -70,12 +93,20 @@ export default class HomePage extends React.Component {
             first_name: this.state.first_name,
             friend_name: this.state.friend_name,
             number_beers: this.state.number_beers,
-            location_name: this.state.location_name
+            location_name: this.state.location_name,
+            id: this.state.id
           }),
         })
         .then((response) => response.json())
+        const beersArr = this.state.beers;
+        beersArr.push(response);
+        // console.log(beers);
+        this.setState({beers})
+        // console.log(this.state);
 
-        AsyncStorage.setItem('auth', JSON.stringify(response[0]))
+        // })
+
+        // AsyncStorage.setItem('auth', JSON.stringify(response[0]))
       }
       catch(error) {
         console.log(error, 'there was an onCheers error');
@@ -123,7 +154,23 @@ export default class HomePage extends React.Component {
     return (
       <View style = {{flex: 1}}>
         <View  style = {{alignItems: 'center', backgroundColor: '#FFDF64', flex: 1, marginTop: 50}}>
-          <Text>Hello Sol!</Text>
+          <View>
+            {
+              this.state.beers.map((e, i) => {
+                console.log(e);
+                return (
+                  <View style= {{flexDirection:'row', justifyContent:'space-between'}} key ={i}>
+                    <Text>Number of Beers</Text>
+                      <Text>{e.number_beers}</Text>
+                    <Text>From</Text>
+                      <Text>{e.friend_name}</Text>
+                    <Text>Location</Text>
+                      <Text>{e.location_name}</Text>
+                  </View>
+                )
+              })
+            }
+          </View>
 
           <TextInput
             value = {this.state.first_name}

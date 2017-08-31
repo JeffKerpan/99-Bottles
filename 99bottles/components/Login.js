@@ -79,13 +79,18 @@ export default class Login extends Component {
       }),
 
     })
-    .then((response) => response.json())
+    .then((response) => {
+    response.json()
+    this.props.navigation.navigate('Main', {})
+
+    })
+
     // .then(cleanRes => cleanRes)
 
 
-    AsyncStorage.setItem('auth', JSON.stringify(response[0]), () =>
-    this.props.navigation.navigate('Main', {}))
-    console.log('login response', response);
+    // AsyncStorage.setItem('auth', JSON.stringify(response[0]), () =>
+    // this.props.navigation.navigate('Main', {}))
+    // console.log('login response', response);
 
   }
   catch(error){
