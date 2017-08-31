@@ -208,8 +208,8 @@ export default class Login extends Component {
       // {this.state.fontLoaded ? (
       <View style = {{alignItems: 'center', backgroundColor: '#FFDF64', flex: 1}}>
         <View style = {{backgroundColor: "transparent", flex: 1, top: 50}}>
-          <Text style = {{color: 'black', fontSize: 36, marginTop: 5, textAlign: 'center'}}>99 BOTTLES</Text>
-          <Image source = {require('../styles/images/beermug2.png')} style = {{alignItems: 'center', marginBottom: 32, position: 'relative'}}></Image>
+          <Text style = {{color: 'black', fontSize: 36, marginTop: 25, marginBottom: 25, textAlign: 'center', fontWeight: 'bold'}}>99 BOTTLES</Text>
+          <Image source = {require('../styles/images/beermug2.png')} style = {{width: 200, marginLeft: 75, marginBottom: 32}}></Image>
 
           <Text style = {{color:'black', fontSize: 23, textAlign: 'center', marginBottom: 23}}>Please Login or Create an Account</Text>
 

@@ -39,7 +39,7 @@ export default class HomePage extends React.Component {
     // }
   }
 
-  componentDidMount() {
+  getBeers = () => {
     fetch(`http://localhost:3200/users/${this.state.id}`, {
       method: 'GET',
         headers: {
@@ -54,6 +54,24 @@ export default class HomePage extends React.Component {
       this.setState({beers:res})
       // console.log(this.state.beers, 'this.state.beers');
   })
+  }
+
+  componentDidMount() {
+    this.getBeers()
+  //   fetch(`http://localhost:3200/users/${this.state.id}`, {
+  //     method: 'GET',
+  //       headers: {
+  //         'Accept': 'application/json',
+  //         'Content-Type': 'application/json'
+  //       }
+  //   })
+  //   .then(response => response.json())
+  //   .then(res => {
+  //     console.log('res');
+  //     // console.log('res', res);
+  //     this.setState({beers:res})
+  //     // console.log(this.state.beers, 'this.state.beers');
+  // })
 }
 
   yourBeers (array) {
@@ -100,8 +118,9 @@ export default class HomePage extends React.Component {
         .then((response) => response.json())
         const beersArr = this.state.beers;
         beersArr.push(response);
+        this.getBeers()
         // console.log(beers);
-        this.setState({beers})
+        // this.setState({beers})
         // console.log(this.state);
 
         // })
@@ -153,18 +172,20 @@ export default class HomePage extends React.Component {
   render() {
     return (
       <View style = {{flex: 1}}>
-        <View  style = {{alignItems: 'center', backgroundColor: '#FFDF64', flex: 1, marginTop: 50}}>
+        <View  style = {{justifyContent: 'center', alignItems: 'center', backgroundColor: '#FFDF64', flex: 1, marginTop: 0}}>
           <View>
             {
               this.state.beers.map((e, i) => {
                 console.log(e);
                 return (
-                  <View style= {{flexDirection:'row', justifyContent:'space-between'}} key ={i}>
+                  <View style= {{flexDirection:'row', justifyContent:'space-between', marginBottom: 25}} key ={i}>
                     <Text>Number of Beers</Text>
                       <Text>{e.number_beers}</Text>
-                    <Text>From</Text>
+                    <Text>NAME</Text>
+                      <Text>{e.first_name}</Text>
+                    <Text>FROM</Text>
                       <Text>{e.friend_name}</Text>
-                    <Text>Location</Text>
+                    <Text>LOCATION</Text>
                       <Text>{e.location_name}</Text>
                   </View>
                 )
