@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TextInput, AppRegistry, Button, StyleSheet, Text, View, TouchableHighlight, TouchableOpacity, Image, AsyncStorage, Scrollview, Animated, Easing, NativeModules } from 'react-native';
+import { TextInput, NumericInput, AppRegistry, Button, StyleSheet, Text, View, TouchableHighlight, TouchableOpacity, Image, AsyncStorage, Scrollview, Animated, Easing, NativeModules } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import style from '../styles/stylecomp.js';
 import { Font } from 'expo';
@@ -13,12 +13,19 @@ export default class HomePage extends React.Component {
     this.state = {
       id: 0,
       user_name: "",
-      password: "",
+      number_beers: 0,
+      location_name: "",
+      location_id: 0,
+      first_name: "",
+      last_name: "",
+      friend_name: "",
+      // password: "",
       fontLoaded: false,
     }
     // this.onSubmit = this.onSubmit.bind(this);
     this.onLogout = this.onLogout.bind(this);
     // this.fadeIn = this.fadeIn.bind(this);
+    this.onCheers = this.onCheers.bind(this);
   }
 
 
@@ -31,22 +38,56 @@ export default class HomePage extends React.Component {
     // }
   }
 
-  async componentDidMount() {
-    let userId = this.props.navigation.state.params.user_id;
-    let response = await
-    // users/login CORRECT ROUTE?
-    fetch(`https://bottles99-api.herokuapp.com/users/${userId}`, {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
+  // async componentDidMount() {
+
+    // let userId = this.props.navigation.state.params.user_id;
+
+    // 1. get auth from local storage
+
+    // let response = await
+    // // users/login CORRECT ROUTE?
+    // fetch(`https://bottles99-api.herokuapp.com/users/${userId}`, {
+    //   method: 'GET',
+    //   headers: {
+    //     'Accept': 'application/json',
+    //     'Content-Type': 'application/json'
+    //   }
+    // })
+    // .then(res => res.json())
+    // .then(auth => console.log(auth))
+
+
+    async onCheers () {
+      try {
+        let response = await
+        fetch('http://localhost:3200/users/cheers', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            first_name: this.state.first_name,
+            friend_name: this.state.friend_name,
+            number_beers: this.state.number_beers,
+            location_name: this.state.location_name
+          }),
+        })
+        .then((response) => response.json())
+
+        AsyncStorage.setItem('auth', JSON.stringify(response[0]))
       }
-    })
+      catch(error) {
+        console.log(error, 'there was an onCheers error');
+      }
+    }
+
+
 
     // let jsonResponse = await response.json() this.setState({
     //   id: userId
     // })
-  }
+
 
   // async componentDidMount() {
   //   await Font.loadAsync({
@@ -91,14 +132,15 @@ export default class HomePage extends React.Component {
             this.setState({first_name: value.trim()})}
             placeholder = 'First Name' />
           <TextInput
-            value = {this.state.last_name}
+            value = {this.state.friend_name}
             style = {style.form}
             onChangeText = {(value) =>
-            this.setState({last_name: value.trim()})}
-            placeholder = 'Last Name' />
+            this.setState({friend_name: value.trim()})}
+            placeholder = 'Friend Name' />
           <TextInput
-            value = {this.state.number_beers}
+            value = {this.state.number_beers.toString()}
             style = {style.form}
+            keyboardType = 'numeric'
             onChangeText = {(value) =>
             this.setState({number_beers: value.trim()})}
             placeholder = 'Number of Beers' />
@@ -108,7 +150,7 @@ export default class HomePage extends React.Component {
             onChangeText = {(value) =>
             this.setState({location_name: value.trim()})}
             placeholder = 'Location Name' />
-            <TouchableOpacity onPress = {this.onSubmit} >
+            <TouchableOpacity onPress = {this.onCheers} >
               <View style = {style.buttonStyle} >
                 <Text style = {{color: 'black'}} >
                 CHEERS!

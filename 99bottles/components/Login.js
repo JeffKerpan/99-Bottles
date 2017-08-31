@@ -23,17 +23,79 @@ export default class Login extends Component {
       sign_up: {
         user_name: "",
         password: ""
-      },
-      login: null,
+      }
 
     }
-    this.onSubmit = this.onSubmit.bind(this);
+    this.onSignUp = this.onSignUp.bind(this);
+    this.onLogIn = this.onLogIn.bind(this);
   }
 
-  // componentDidMount() {
-  //   axios.get('http://localhost:3200/users')
-  //   .then((res) => console.log(res))
+  // async onLogIn() {
+  //   // console.log(this.props.navigation.state.params.user_id);
+  //   let response = await
+  //   fetch(`https://bottles99-api.herokuapp.com/users/login`, {
+  //     method: 'POST',
+  //     headers: {
+  //       'Accept': 'application/json',
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({
+  //       user_name: this.state.user_name,
+  //       password: this.state.password
+  //     }),
+  //
+  //   })
+  //
+  //   let jsonResponse = await response.json()
+  //   this.setState({id: jsonResponse[0].id}, async()=> {
+  //     let userId= this.state.id.toString()
+  //     try{
+  //       await
+  //       AsyncStorage.setItem('@UserId:key', userId);
+  //     } catch (error){
+  //       console.log(error);
+  //     }
+  //     this.props.navigation.navigate('Main', {
+  //       userId: this.state.id})
+  //   });
+  //
+  //   // this.props.navigation.navigate('Main');
   // }
+
+
+  async onLogIn() {
+    // console.log(this.props.navigation.state.params.user_id);
+  try{
+    let response = await
+    fetch(`http://localhost:3200/users/login`, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        user_name: this.state.user_name,
+        password: this.state.password
+      }),
+
+    })
+    .then((response) => response.json())
+    // .then(cleanRes => cleanRes)
+
+
+    AsyncStorage.setItem('auth', JSON.stringify(response[0]), () =>
+    this.props.navigation.navigate('Main', {}))
+    console.log('login response', response);
+
+  }
+  catch(error){
+    console.log(error, 'there was a login error');
+  }
+
+
+    // this.props.navigation.navigate('Main');
+  }
+
 
   // async componentDidMount() {
   //   await Font.loadAsync ({
@@ -98,10 +160,10 @@ export default class Login extends Component {
     // }
 
 
-    async onSubmit () {
+    async onSignUp () {
       // console.log(this.state);
       try {
-        let response = await fetch('https://bottles99-api.herokuapp.com/users/new', {
+        let response = await fetch('http://localhost:3200/users/new', {
           method: 'POST',
           headers: {
             'Accept': 'application/json',
@@ -115,10 +177,12 @@ export default class Login extends Component {
 
         AsyncStorage.setItem('auth', JSON.stringify(response[0]), () => this.props.navigation.navigate('Main', {}))
 
+        // this.props.navigation.navigate('Main', {userId: this.state.id}))
+
 
       }
-      catch(e){
-          console.log(e, 'there was an error');
+      catch(error){
+          console.log(error, 'there was an signup error');
       }
       // let jsonResponse = await response.json()
       // this.setState({id:jsonResponse[0].id}, async() => {
@@ -157,7 +221,7 @@ export default class Login extends Component {
             this.setState({password: value.trim()})}
             placeholder = 'Password'
             secrureTextEntry = {true} />
-            <TouchableOpacity onPress = {this.onSubmit}>
+            <TouchableOpacity onPress = {this.onLogIn}>
               <View style = {style.buttonStyle} >
                 <Text style = {{color: 'black'}} >
                 Log In
@@ -189,7 +253,7 @@ export default class Login extends Component {
             this.setState({sign_up: {password: value.trim(), user_name: this.state.sign_up.user_name}})}
             placeholder = 'Password'
             secrureTextEntry = {true} />
-            <TouchableOpacity onPress = {this.onSubmit} >
+            <TouchableOpacity onPress = {this.onSignUp} >
               <View style = {style.buttonStyle} >
                 <Text style = {{color: 'black'}} >
                 Sign Up
