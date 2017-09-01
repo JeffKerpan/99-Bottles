@@ -9,7 +9,8 @@ import axios from 'axios';
 
 export default class Login extends Component {
 
-  static navigationOptions = {header:null}
+  // Top of page title/naviation
+  static navigationOptions = {title:'Login', header:null}
 
   constructor () {
     super();
@@ -29,6 +30,8 @@ export default class Login extends Component {
     this.onSignUp = this.onSignUp.bind(this);
     this.onLogIn = this.onLogIn.bind(this);
   }
+
+
 
   // async onLogIn() {
   //   // console.log(this.props.navigation.state.params.user_id);
@@ -209,7 +212,9 @@ export default class Login extends Component {
       <View style = {{alignItems: 'center', backgroundColor: '#FFDF64', flex: 1}}>
         <View style = {{backgroundColor: "transparent", flex: 1, top: 50}}>
           <Text style = {{color: 'black', fontSize: 36, marginTop: 25, marginBottom: 25, textAlign: 'center', fontWeight: 'bold'}}>99 BOTTLES</Text>
-          <Image source = {require('../styles/images/beermug2.png')} style = {{width: 200, marginLeft: 75, marginBottom: 32}}></Image>
+          // <Animated.View style={{AnimateStyle}}>
+            <Image source = {require('../styles/images/beermug2.png')} style = {{width: 200, marginLeft: 75, marginBottom: 32}}></Image>
+          // </Animated.View>
 
           <Text style = {{color:'black', fontSize: 23, textAlign: 'center', marginBottom: 23}}>Please Login or Create an Account</Text>
 

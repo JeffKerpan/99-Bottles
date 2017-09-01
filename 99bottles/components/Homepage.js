@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { TextInput, NumericInput, AppRegistry, Button, StyleSheet, Text, View, TouchableHighlight, TouchableOpacity, Image, AsyncStorage, Scrollview, Animated, Easing, NativeModules } from 'react-native';
+import { TextInput, NumericInput, AppRegistry, Button, StyleSheet, Text, View, TouchableHighlight, TouchableOpacity, Image, AsyncStorage, ScrollView, Animated, Easing, NativeModules } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import style from '../styles/stylecomp.js';
 import { Font } from 'expo';
 
 export default class HomePage extends React.Component {
 
-  static navigationOptions = { header:null }
+  //Title/naviation at top of page
+  static navigationOptions = { headerStyle: {backgroundColor: '#FFDF64'} }
 
   constructor () {
     super();
@@ -49,11 +50,16 @@ export default class HomePage extends React.Component {
     })
     .then(response => response.json())
     .then(res => {
-      console.log('res');
+      console.log(res);
+      // res = res.split(' ').map(e => e.location_name[0].toUpperCase() + e.location_name.slice(1)).join(' ');
+      res.forEach(function(each) {
+        each.location_name =  each.location_name.split(' ').map(e => e[0].toUpperCase() + e.slice(1)).join(' ');
+
+      })
       // console.log('res', res);
       this.setState({beers:res})
       // console.log(this.state.beers, 'this.state.beers');
-  })
+    })
   }
 
   componentDidMount() {
@@ -111,7 +117,7 @@ export default class HomePage extends React.Component {
             first_name: this.state.first_name,
             friend_name: this.state.friend_name,
             number_beers: this.state.number_beers,
-            location_name: this.state.location_name,
+            location_name: this.state.location_name.trim(),
             id: this.state.id
           }),
         })
@@ -173,26 +179,26 @@ export default class HomePage extends React.Component {
     return (
       <View style = {{flex: 1}}>
         <View  style = {{justifyContent: 'center', alignItems: 'center', backgroundColor: '#FFDF64', flex: 1, marginTop: 0}}>
-          <View>
+          <ScrollView style={{flex: 2}}>
             {
               this.state.beers.map((e, i) => {
                 console.log(e);
                 return (
-                  <View style= {{flexDirection:'row', justifyContent:'space-between', marginBottom: 25}} key ={i}>
-                    <Text>Number of Beers</Text>
+                  <View style= {{flexDirection:'row', justifyContent:'space-between',justifyContent: 'space-around', marginBottom: 5}} key ={i}>
+                    <Text>NUMBER of BEERS </Text>
                       <Text>{e.number_beers}</Text>
-                    <Text>NAME</Text>
+                    <Text> NAME </Text>
                       <Text>{e.first_name}</Text>
-                    <Text>FROM</Text>
+                    <Text> FROM </Text>
                       <Text>{e.friend_name}</Text>
-                    <Text>LOCATION</Text>
+                    <Text> LOCATION </Text>
                       <Text>{e.location_name}</Text>
                   </View>
                 )
               })
             }
-          </View>
-
+          </ScrollView>
+          <View style = {{flex: 2}}>
           <TextInput
             value = {this.state.first_name}
             style = {style.form}
@@ -216,7 +222,7 @@ export default class HomePage extends React.Component {
             value = {this.state.location_name}
             style = {style.form}
             onChangeText = {(value) =>
-            this.setState({location_name: value.trim()})}
+            this.setState({location_name: value})}
             placeholder = 'Location Name' />
             <TouchableOpacity onPress = {this.onCheers} >
               <View style = {style.buttonStyle} >
@@ -234,6 +240,7 @@ export default class HomePage extends React.Component {
               </Text>
             </View>
           </TouchableOpacity>
+          </View>
         </View>
       </View>
     );
