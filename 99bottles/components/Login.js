@@ -206,73 +206,96 @@ export default class Login extends Component {
       // console.log(this.state.login);
 
     render() {
+      const AnimateStyle = {
+        'width': 50,
+        'height': 50,
+        'left': 380
+        // 'transform': 'translateX(10)',
+     }
+     const AnimateStyle2 = {
+       'width': 50,
+       'height': 50,
+      //  'alignContent': 'center',
+      //  'justifyContent': 'center',
+       'bottom': 50,
+       'right': 225
+      //  'transform': [{translateY: 180}]
+    }
       return (
         // <View style = {style.container}>
       // {this.state.fontLoaded ? (
-      <View style = {{alignItems: 'center', backgroundColor: '#FFDF64', flex: 1}}>
+      // <View style = {{alignItems: 'center', backgroundColor: '#FFDF64', flex: 1}}>
+      <Image source={require('../styles/images/background.png')} style = {style.backGround} resizeMode={Image.resizeMode.stretch}>
         <View style = {{backgroundColor: "transparent", flex: 1, top: 50}}>
-          <Text style = {{color: 'black', fontSize: 36, marginTop: 25, marginBottom: 25, textAlign: 'center', fontWeight: 'bold'}}>99 BOTTLES</Text>
-          // <Animated.View style={{AnimateStyle}}>
-            <Image source = {require('../styles/images/beermug2.png')} style = {{width: 200, marginLeft: 75, marginBottom: 32}}></Image>
-          // </Animated.View>
+          <Text style = {{color: 'black', fontSize: 36, marginTop: 25, marginBottom: 50, textAlign: 'center', fontWeight: 'bold'}}>99 BOTTLES</Text>
+          <View>
+            <Animated.View style={AnimateStyle}>
+              <Image source = {require('../styles/images/beermug2.png')}></Image>
+            </Animated.View>
 
-          <Text style = {{color:'black', fontSize: 23, textAlign: 'center', marginBottom: 23}}>Please Login or Create an Account</Text>
+            <Animated.View style={AnimateStyle2}>
+              <Image source = {require('../styles/images/beermug2reverse.png')}></Image>
+            </Animated.View>
+          </View>
+          <View style ={style.container}>
+            <Text style = {{color:'black', fontSize: 23, marginBottom: 32, marginTop: 75,  alignContent: 'center'}}>Please Login or Create an Account</Text>
 
-          <TextInput
-            value = {this.state.user_name}
-            style = {style.form}
-            onChangeText = {(value) =>
-            this.setState({user_name: value.trim()})}
-            placeholder = 'Username' />
-          <TextInput
-            value = {this.state.password}
-            style = {style.form}
-            onChangeText = {(value) =>
-            this.setState({password: value.trim()})}
-            placeholder = 'Password'
-            secrureTextEntry = {true} />
-            <TouchableOpacity onPress = {this.onLogIn}>
-              <View style = {style.buttonStyle} >
-                <Text style = {{color: 'black'}} >
-                Log In
-                </Text>
+            <TextInput
+              value = {this.state.user_name}
+              style = {style.form}
+              onChangeText = {(value) =>
+              this.setState({user_name: value.trim()})}
+              placeholder = 'Username' />
+            <TextInput
+              value = {this.state.password}
+              style = {style.form}
+              onChangeText = {(value) =>
+              this.setState({password: value.trim()})}
+              placeholder = 'Password'
+              secrureTextEntry = {true} />
+              <TouchableOpacity onPress = {this.onLogIn}>
+                <View style = {style.buttonStyle} >
+                  <Text style = {{color: 'black'}} >
+                  Log In
+                  </Text>
+                </View>
+              </TouchableOpacity>
+            <TextInput
+              value={this.state.first_name}
+              style = {style.form}
+              onChangeText = {(value) =>
+              this.setState({first_name: value.trim()})}
+              placeholder = 'Firstname' />
+            <TextInput
+              value = {this.state.last_name}
+              style = {style.form}
+              onChangeText = {(value) =>
+              this.setState({last_name: value.trim()})}
+              placeholder = 'Lastname' />
+            <TextInput
+              value = {this.state.sign_up.user_name}
+              style = {style.form}
+              onChangeText = {(value) =>
+              this.setState({sign_up: {user_name: value.trim(), password: this.state.sign_up.password}})}
+              placeholder = 'Username' />
+            <TextInput
+              value = {this.state.sign_up.password}
+              style = {style.form}
+              onChangeText = {(value) =>
+              this.setState({sign_up: {password: value.trim(), user_name: this.state.sign_up.user_name}})}
+              placeholder = 'Password'
+              secrureTextEntry = {true} />
+              <TouchableOpacity onPress = {this.onSignUp} >
+                <View style = {style.buttonStyle} >
+                  <Text style = {{color: 'black'}} >
+                  Sign Up
+                  </Text>
               </View>
             </TouchableOpacity>
-          <TextInput
-            value={this.state.first_name}
-            style = {style.form}
-            onChangeText = {(value) =>
-            this.setState({first_name: value.trim()})}
-            placeholder = 'Firstname' />
-          <TextInput
-            value = {this.state.last_name}
-            style = {style.form}
-            onChangeText = {(value) =>
-            this.setState({last_name: value.trim()})}
-            placeholder = 'Lastname' />
-          <TextInput
-            value = {this.state.sign_up.user_name}
-            style = {style.form}
-            onChangeText = {(value) =>
-            this.setState({sign_up: {user_name: value.trim(), password: this.state.sign_up.password}})}
-            placeholder = 'Username' />
-          <TextInput
-            value = {this.state.sign_up.password}
-            style = {style.form}
-            onChangeText = {(value) =>
-            this.setState({sign_up: {password: value.trim(), user_name: this.state.sign_up.user_name}})}
-            placeholder = 'Password'
-            secrureTextEntry = {true} />
-            <TouchableOpacity onPress = {this.onSignUp} >
-              <View style = {style.buttonStyle} >
-                <Text style = {{color: 'black'}} >
-                Sign Up
-                </Text>
-              </View>
-            </TouchableOpacity>
-
+          </View>
         </View>
-      </View>
+        </Image>
+      // </View>
       // ): null
       // }
       // </View>

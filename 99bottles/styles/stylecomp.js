@@ -2,6 +2,14 @@ import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
 
+backGround:{
+  flex: 1,
+  alignSelf: 'stretch',
+  width: null,
+  alignItems: 'center',
+  justifyContent: 'center'
+},
+
 buttonStyle:{
     width: 200,
     height:32,
@@ -9,12 +17,16 @@ buttonStyle:{
     alignItems: 'center',
     justifyContent: 'center',
     borderColor: "grey",
-    borderWidth: 1,
-    borderRadius: 5,
-    marginBottom: 4,
-    marginTop: 5,
+    borderWidth: 1.5,
+    borderRadius: 25,
+    marginBottom: 10,
+    marginTop: 10,
     marginLeft: 4
   },
+
+  // bottles:{
+  //
+  // }
 
   container: {
     flex: 1,

@@ -3,11 +3,16 @@ import { TextInput, NumericInput, AppRegistry, Button, StyleSheet, Text, View, T
 import { StackNavigator } from 'react-navigation';
 import style from '../styles/stylecomp.js';
 import { Font } from 'expo';
+import resolveAssetSource from 'resolveAssetSource';
+// const HEADER_PATTERN = resolveAssetSource(require('../styles/images/beerfoam.png'));
 
 export default class HomePage extends React.Component {
 
   //Title/naviation at top of page
-  static navigationOptions = { headerStyle: {backgroundColor: '#FFDF64'} }
+  static navigationOptions = { headerStyle: {backgroundColor: '#FFDF64'}}
+  //backgroundColor: '#FFDF64'
+  // static navigationOptions = { navigationBarBackgroundImage={require('../styles/images/beerfoam.png')}
+  // }
 
   constructor () {
     super();
@@ -173,12 +178,14 @@ export default class HomePage extends React.Component {
   //     }
   //   })
   // }
+  //#FFDF64
 
 
   render() {
     return (
-      <View style = {{flex: 1}}>
-        <View  style = {{justifyContent: 'center', alignItems: 'center', backgroundColor: '#FFDF64', flex: 1, marginTop: 0}}>
+      // <View style = {{flex: 1}}>
+      <Image source={require('../styles/images/background.png')} style = {style.backGround} resizeMode={Image.resizeMode.stretch}>
+        <View  style = {{justifyContent: 'center', alignItems: 'center', backgroundColor: 'transparent', flex: 1, marginTop: 0}}>
           <ScrollView style={{flex: 2}}>
             {
               this.state.beers.map((e, i) => {
@@ -198,7 +205,7 @@ export default class HomePage extends React.Component {
               })
             }
           </ScrollView>
-          <View style = {{flex: 2}}>
+          <View style = {style.container}>
           <TextInput
             value = {this.state.first_name}
             style = {style.form}
@@ -242,7 +249,8 @@ export default class HomePage extends React.Component {
           </TouchableOpacity>
           </View>
         </View>
-      </View>
+      </Image>
+      // </View>
     );
   }
 
