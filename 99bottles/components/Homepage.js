@@ -9,7 +9,7 @@ import resolveAssetSource from 'resolveAssetSource';
 export default class HomePage extends React.Component {
 
   //Title/naviation at top of page
-  static navigationOptions = { headerStyle: {backgroundColor: '#FFDF64'}}
+  static navigationOptions = { headerStyle: {backgroundColor: '#FFF6D4'}}
   //backgroundColor: '#FFDF64'
   // static navigationOptions = { navigationBarBackgroundImage={require('../styles/images/beerfoam.png')}
   // }
@@ -159,7 +159,8 @@ export default class HomePage extends React.Component {
   //     'Rubik-Medium': require('../Assets/Fonts/Rubik-Medium.ttf'),
   //     'Rubik-Regular': require('../Assets/Fonts/Rubik-Regular.ttf')
   //   });
-  //   this.setState({ fontLoaded: true },
+  //   this.setState({ fontLoaded: true })
+  // }
   // async() =>{
   //     //DO I NEED THIS fadeIn
   //     // this.fadeIn()
@@ -177,7 +178,7 @@ export default class HomePage extends React.Component {
   //       console.log(error);
   //     }
   //   })
-  // }
+// },
   //#FFDF64
 
 
@@ -233,16 +234,14 @@ export default class HomePage extends React.Component {
             placeholder = 'Location Name' />
             <TouchableOpacity onPress = {this.onCheers} >
               <View style = {style.buttonStyle} >
-                <Text style = {{color: 'black'}} >
+                <Text style = {{color: 'black', fontFamily: 'ChalkboardSE-Bold'}} >
                 CHEERS!
                 </Text>
               </View>
             </TouchableOpacity>
-
-
           <TouchableOpacity onPress = {this.onLogout}>
             <View style = {style.buttonStyle}>
-              <Text style = {{color: 'black'}}>
+              <Text style = {{color: 'black', fontFamily: 'ChalkboardSE-Bold'}}>
               Log Out
               </Text>
             </View>
@@ -250,8 +249,6 @@ export default class HomePage extends React.Component {
           </View>
         </View>
       </Image>
-      // </View>
     );
   }
-
 }

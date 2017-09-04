@@ -13,15 +13,17 @@ backGround:{
 buttonStyle:{
     width: 200,
     height:32,
-    backgroundColor: '#D1B752',
+    backgroundColor: '#BAA349',
     alignItems: 'center',
     justifyContent: 'center',
     borderColor: "grey",
     borderWidth: 1.5,
-    borderRadius: 25,
+    borderRadius: 50,
     marginBottom: 10,
     marginTop: 10,
-    marginLeft: 4
+    // marginLeft: 4
+
+
   },
 
   // bottles:{
@@ -41,9 +43,12 @@ buttonStyle:{
     width: 250,
     padding: 10,
     marginBottom: 4,
+    borderColor: 'gray',
+    borderWidth: .5,
     backgroundColor: '#FFEDAA',
     alignItems: 'center',
     justifyContent: 'center'
+
   },
 
 })
