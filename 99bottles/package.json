@@ -19,7 +19,9 @@
     "preset": "jest-expo"
   },
   "rnpm": {
-    "assets": ["./Assets/Fonts"]
+    "assets": [
+      "./Assets/Fonts"
+    ]
   },
   "dependencies": {
     "axios": "^0.16.2",

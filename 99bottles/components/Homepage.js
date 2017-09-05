@@ -188,18 +188,19 @@ export default class HomePage extends React.Component {
       <Image source={require('../styles/images/background.png')} style = {style.backGround} resizeMode={Image.resizeMode.stretch}>
         <View  style = {{justifyContent: 'center', alignItems: 'center', backgroundColor: 'transparent', flex: 1, marginTop: 0}}>
           <ScrollView style={{flex: 2}}>
+          <Text>NUMBER of BEERS </Text><Text> NAME </Text><Text> FROM </Text><Text> LOCATION </Text>
             {
               this.state.beers.map((e, i) => {
                 console.log(e);
                 return (
                   <View style= {{flexDirection:'row', justifyContent:'space-between',justifyContent: 'space-around', marginBottom: 5}} key ={i}>
-                    <Text>NUMBER of BEERS </Text>
+
                       <Text>{e.number_beers}</Text>
-                    <Text> NAME </Text>
+
                       <Text>{e.first_name}</Text>
-                    <Text> FROM </Text>
+
                       <Text>{e.friend_name}</Text>
-                    <Text> LOCATION </Text>
+
                       <Text>{e.location_name}</Text>
                   </View>
                 )
