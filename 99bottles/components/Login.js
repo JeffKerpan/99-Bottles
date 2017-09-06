@@ -100,12 +100,15 @@ export default class Login extends Component {
   //   // this.props.navigation.navigate('Main');
   // }
 
+  // http://localhost:3200/users/login
+  // https://bottles99-api.herokuapp.com/users/login
+
 
   async onLogIn() {
     // console.log(this.props.navigation.state.params.user_id);
     try {
       let response = await
-      fetch(`http://localhost:3200/users/login`, {
+      fetch(`https://bottles99-api.herokuapp.com/users/login`, {
           method: 'POST',
           headers: {
             'Accept': 'application/json',
@@ -138,68 +141,8 @@ export default class Login extends Component {
     // this.props.navigation.navigate('Main');
   }
 
-
-  // async componentDidMount() {
-  //   await Font.loadAsync ({
-  //     'MuktaMalar-Bold':
-  //     require('../Assets/Fonts/MuktaMalar-Bold.ttf'),
-  //     'MuktaMalar-Medium':
-  //     require('../Assets/Fonts/MuktaMalar-Medium.ttf'),
-  //     'MuktaMalar-Regular':
-  //     require('../Assets/Fonts/MuktaMalar-Regular.ttf'),
-  //     'Rubik-Medium':
-  //     require('../Assets/Fonts/Rubik-Medium.ttf'),
-  //     'Rubik-Regular':
-  //     require('../Assets/Fonts/Rubik-Regular.ttf')
-  //   });
-  //   this.setState({ fontLoaded: true })
-  // }
-
-  // async onSubmit () {
-  //   let response = await fetch('http://localhost:3200/', {
-  // let response = await fetch('https://bottles99-api.herokuapp.com/users/create', {
-  // method: 'GET',
-  // headers: {
-  //   'Accept': 'application/json',
-  //   'Content-Type': 'application/json'
-  // }
-  // body: ({
-  //   message: 'HERE'
-  // firstName: this.state.firstname,
-  // lastName: this.state.lastname,
-  // userName: this.state.username,
-  // password: this.state.password
-  // })
-  // })
-  //   let jsonResponse = await response.json()
-  //   console.log(jsonResponse);
-
-  // this.setState({
-  //   id: 1,
-  //   firstname: "",
-  //   lastname: "",
-  //   username: "",
-  //   password: ""
-  // }, async () => {
-  //   let userId = this.state.id.toString()
-  //   try {
-  //     await AsyncStorage.setItem('@UserId:key', userId);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  //   this.props.navigation.navigate('Main', {
-  //     userId: this.state.id})
-  //   });
-  // }
-  // })
-
-  // componentDidMount() {
-  //   return fetch('https://bottles99-api.herokuapp.com/users')
-  //   .then((response) => response.json())
-  //   .then((responseJson) => {
-  //     console.log(responseJson);
-  //   });
-  // }
+  // fetch('http://localhost:3200/users/new',
+  // https://bottles99-api.herokuapp.com/users/new
 
 
   async onSignUp() {

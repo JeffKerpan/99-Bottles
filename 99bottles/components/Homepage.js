@@ -23,7 +23,7 @@ export default class HomePage extends React.Component {
     this.state = {
       id: 1,
       user_name: "",
-      number_beers: 0,
+      // number_beers: 0,
       location_name: "",
       location_id: 0,
       first_name: "",
@@ -49,8 +49,12 @@ export default class HomePage extends React.Component {
     // }
   }
 
+  // http://localhost:3200/users/${this.state.id}
+
+  // https://bottles99-api.herokuapp.com/users/${this.state.id}
+
   getBeers = () => {
-    fetch(`http://localhost:3200/users/${this.state.id}`, {
+    fetch(`https://bottles99-api.herokuapp.com/users/${this.state.id}`, {
       method: 'GET',
         headers: {
           'Accept': 'application/json',
@@ -112,11 +116,14 @@ export default class HomePage extends React.Component {
     // .then(res => res.json())
     // .then(auth => console.log(auth))
 
+    // http://localhost:3200/users/cheers
+    // https://bottles99-api.herokuapp.com/users/cheers
+
 
     async onCheers () {
       try {
         let response = await
-        fetch('http://localhost:3200/users/cheers', {
+        fetch('https://bottles99-api.herokuapp.com/users/cheers', {
           method: 'POST',
           headers: {
             'Accept': 'application/json',
@@ -215,7 +222,7 @@ export default class HomePage extends React.Component {
 
 
   render() {
-    const tableHead = ['# BEERS', 'NAME', 'FROM', 'LOCATION'];
+    const tableHead = ['BEERS', 'NAME', 'FROM', 'LOCATION'];
     return (
       // <View style = {{flex: 1}}>
       <Image source={require('../styles/images/background.png')} style = {style.backGround} resizeMode={Image.resizeMode.stretch}>
@@ -231,7 +238,7 @@ export default class HomePage extends React.Component {
                 ];
                 return (
                   <View key ={i}>
-                    <Rows data= {tableData} style={[style.tableRow, i%2 && {backgroundColor: '#DFF5F2'}]} textStyle={style.tableText}/>
+                    <Rows data= {tableData} style={[style.tableRow, i%2 && {backgroundColor: '#ccc19f'}]} textStyle={style.tableText}/>
                   </View>
                 )
               })
@@ -244,15 +251,15 @@ export default class HomePage extends React.Component {
               style = {style.form}
               onChangeText = {(value) =>
               this.setState({first_name: value.trim()})}
-              placeholder = 'First Name' />
+              placeholder = 'Your First Name' />
             <TextInput
               value = {this.state.friend_name}
               style = {style.form}
               onChangeText = {(value) =>
               this.setState({friend_name: value.trim()})}
-              placeholder = 'Friend Name' />
+              placeholder = "Friend's Name" />
             <TextInput
-              value = {this.state.number_beers.toString()}
+              value = {this.state.number_beers}
               style = {style.form}
               keyboardType = 'numeric'
               onChangeText = {(value) =>

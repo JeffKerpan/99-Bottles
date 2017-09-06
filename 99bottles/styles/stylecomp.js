@@ -74,11 +74,15 @@ buttonStyle:{
 
   tableHead: {
     height: 60,
-    backgroundColor: '#f1f8ff',
+    backgroundColor: 'black',
+
     // #f0f0f0
     // #fff
     // #333
     // #DFF5F2
+    // #a59972
+    // #6b6244
+    // #a59972
 
   },
 
@@ -86,7 +90,8 @@ buttonStyle:{
     marginLeft: 5,
     fontFamily: 'ChalkboardSE-Bold',
     fontSize: 23,
-    color: 'rgb(25,25,25)',
+    color: 'white',
+    justifyContent: 'center'
   },
 
   tableText: {
@@ -98,7 +103,7 @@ buttonStyle:{
 
   tableRow: {
     height: 40,
-    backgroundColor: 'rgb(200,200,200)',
+    backgroundColor: 'rgb(236, 236, 236)',
   },
 
   container: {
