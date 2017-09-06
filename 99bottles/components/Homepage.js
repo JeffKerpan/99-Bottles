@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
-import { TextInput, NumericInput, AppRegistry, Button, StyleSheet, Text, View, TouchableHighlight, TouchableOpacity, Image, AsyncStorage, ScrollView, Animated, Easing, NativeModules } from 'react-native';
+import { TextInput, NumericInput, AppRegistry, Button, StyleSheet, Text, View, TouchableHighlight, TouchableOpacity, Image, AsyncStorage, ScrollView, Animated, Easing, NativeModules, Platform } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import style from '../styles/stylecomp.js';
 import { Font } from 'expo';
 import resolveAssetSource from 'resolveAssetSource';
+import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
+// import Table from 'react-native-simple-table';
+// import DataFactory from '../mock/DataFactory';
+
 // const HEADER_PATTERN = resolveAssetSource(require('../styles/images/beerfoam.png'));
 
 export default class HomePage extends React.Component {
@@ -182,73 +186,102 @@ export default class HomePage extends React.Component {
   //#FFDF64
 
 
+  // <ScrollView style={{flex: 2}}>
+  // <Text>NUMBER of BEERS </Text><Text> NAME </Text><Text> FROM </Text><Text> LOCATION </Text>
+  //   {
+  //     this.state.beers.map((e, i) => {
+  //       console.log(e);
+  //       return (
+  //
+  //         <View style= {{flexDirection:'row', justifyContent:'space-between',justifyContent: 'space-around', marginBottom: 5}} key ={i}>
+  //
+  //
+  //             <Text>{e.number_beers}</Text>
+  //
+  //             <Text>{e.first_name}</Text>
+  //
+  //             <Text>{e.friend_name}</Text>
+  //
+  //             <Text>{e.location_name}</Text>
+  //         </View>
+  //       )
+  //     })
+  //   }
+  // </ScrollView>
+
+
+
+
+
+
   render() {
+    const tableHead = ['# BEERS', 'NAME', 'FROM', 'LOCATION'];
     return (
       // <View style = {{flex: 1}}>
       <Image source={require('../styles/images/background.png')} style = {style.backGround} resizeMode={Image.resizeMode.stretch}>
-        <View  style = {{justifyContent: 'center', alignItems: 'center', backgroundColor: 'transparent', flex: 1, marginTop: 0}}>
+        <View style = {style.homePageStyle}>
           <ScrollView style={{flex: 2}}>
+            <Table style={style.tableStyle}>
+            <Row data={tableHead} style={style.tableHead} textStyle={style.tableHeadText}/>
             {
               this.state.beers.map((e, i) => {
-                console.log(e);
+                console.log([e.number_beers, e.first_name, e.friend_name, e.location_name]);
+                const tableData = [
+                  [e.number_beers, e.friend_name, e.first_name, e.location_name]
+                ];
                 return (
-                  <View style= {{flexDirection:'row', justifyContent:'space-between',justifyContent: 'space-around', marginBottom: 5}} key ={i}>
-                    <Text>NUMBER of BEERS </Text>
-                      <Text>{e.number_beers}</Text>
-                    <Text> NAME </Text>
-                      <Text>{e.first_name}</Text>
-                    <Text> FROM </Text>
-                      <Text>{e.friend_name}</Text>
-                    <Text> LOCATION </Text>
-                      <Text>{e.location_name}</Text>
+                  <View key ={i}>
+                    <Rows data= {tableData} style={[style.tableRow, i%2 && {backgroundColor: '#DFF5F2'}]} textStyle={style.tableText}/>
                   </View>
                 )
               })
             }
+            </Table>
           </ScrollView>
           <View style = {style.container}>
-          <TextInput
-            value = {this.state.first_name}
-            style = {style.form}
-            onChangeText = {(value) =>
-            this.setState({first_name: value.trim()})}
-            placeholder = 'First Name' />
-          <TextInput
-            value = {this.state.friend_name}
-            style = {style.form}
-            onChangeText = {(value) =>
-            this.setState({friend_name: value.trim()})}
-            placeholder = 'Friend Name' />
-          <TextInput
-            value = {this.state.number_beers.toString()}
-            style = {style.form}
-            keyboardType = 'numeric'
-            onChangeText = {(value) =>
-            this.setState({number_beers: value.trim()})}
-            placeholder = 'Number of Beers' />
-          <TextInput
-            value = {this.state.location_name}
-            style = {style.form}
-            onChangeText = {(value) =>
-            this.setState({location_name: value})}
-            placeholder = 'Location Name' />
-            <TouchableOpacity onPress = {this.onCheers} >
-              <View style = {style.buttonStyle} >
-                <Text style = {{color: 'black', fontFamily: 'ChalkboardSE-Bold'}} >
-                CHEERS!
+            <TextInput
+              value = {this.state.first_name}
+              style = {style.form}
+              onChangeText = {(value) =>
+              this.setState({first_name: value.trim()})}
+              placeholder = 'First Name' />
+            <TextInput
+              value = {this.state.friend_name}
+              style = {style.form}
+              onChangeText = {(value) =>
+              this.setState({friend_name: value.trim()})}
+              placeholder = 'Friend Name' />
+            <TextInput
+              value = {this.state.number_beers.toString()}
+              style = {style.form}
+              keyboardType = 'numeric'
+              onChangeText = {(value) =>
+              this.setState({number_beers: value.trim()})}
+              placeholder = 'Number of Beers' />
+            <TextInput
+              value = {this.state.location_name}
+              style = {style.form}
+              onChangeText = {(value) =>
+              this.setState({location_name: value})}
+              placeholder = 'Location Name' />
+              <TouchableOpacity onPress = {this.onCheers} >
+                <View style = {style.buttonStyle} >
+                  <Text style = {style.buttonText} >
+                  CHEERS!
+                  </Text>
+                </View>
+              </TouchableOpacity>
+            <TouchableOpacity onPress = {this.onLogout}>
+              <View style = {style.buttonStyle}>
+                <Text style = {style.buttonText}>
+                Log Out
                 </Text>
               </View>
-            </TouchableOpacity>
-          <TouchableOpacity onPress = {this.onLogout}>
-            <View style = {style.buttonStyle}>
-              <Text style = {{color: 'black', fontFamily: 'ChalkboardSE-Bold'}}>
-              Log Out
-              </Text>
-            </View>
           </TouchableOpacity>
           </View>
         </View>
       </Image>
+
     );
   }
 }

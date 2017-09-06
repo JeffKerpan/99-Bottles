@@ -10,9 +10,36 @@ backGround:{
   justifyContent: 'center'
 },
 
+foamStyle: {
+  width: 1000,
+  height: 150,
+  // left: -100,
+  overflow: 'hidden',
+  alignItems: 'center',
+  backgroundColor: 'black'
+},
+
+titleStyle: {
+  top: 40,
+  zIndex: 10,
+  fontSize: 40,
+  backgroundColor: 'rgba(0,0,0,0)',
+  fontFamily: 'ChalkboardSE-Bold',
+  textAlign: 'center'
+},
+
+loginCreateStyle: {
+  color:'black',
+  fontSize: 23,
+  marginBottom: 32,
+  marginTop: 75,
+  alignContent: 'center',
+  fontFamily: 'ChalkboardSE-Regular', backgroundColor: 'rgba(0,0,0,0)'
+},
+
 buttonStyle:{
-    width: 200,
-    height:32,
+    width: 250,
+    height:36,
     backgroundColor: '#BAA349',
     alignItems: 'center',
     justifyContent: 'center',
@@ -21,14 +48,58 @@ buttonStyle:{
     borderRadius: 50,
     marginBottom: 10,
     marginTop: 10,
-    // marginLeft: 4
+  },
 
+  buttonText: {
+    color: 'black',
+    fontFamily: 'ChalkboardSE-Bold',
+    fontSize: 18
+  },
+
+  homePageStyle: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'transparent',
+    flex: 1,
+    marginTop: 10
+  },
+
+  tableStyle: {
+    width: 700,
+    // height: 340,
+    borderWidth: 0.5,
+    shadowColor: 'rgb(214,200,200)',
+    shadowRadius: 12,
+  },
+
+  tableHead: {
+    height: 60,
+    backgroundColor: '#f1f8ff',
+    // #f0f0f0
+    // #fff
+    // #333
+    // #DFF5F2
 
   },
 
-  // bottles:{
-  //
-  // }
+  tableHeadText: {
+    marginLeft: 5,
+    fontFamily: 'ChalkboardSE-Bold',
+    fontSize: 23,
+    color: 'rgb(25,25,25)',
+  },
+
+  tableText: {
+    marginLeft: 5,
+    fontFamily: 'ChalkboardSE-Regular',
+    fontSize: 20,
+    color: 'rgb(25,25,25)',
+  },
+
+  tableRow: {
+    height: 40,
+    backgroundColor: 'rgb(200,200,200)',
+  },
 
   container: {
     flex: 1,
@@ -40,15 +111,16 @@ buttonStyle:{
 
   form: {
     height:40,
-    width: 250,
+    width: 275,
     padding: 10,
     marginBottom: 4,
     borderColor: 'gray',
     borderWidth: .5,
     backgroundColor: '#FFEDAA',
     alignItems: 'center',
-    justifyContent: 'center'
-
+    justifyContent: 'center',
+    shadowColor: 'rgb(214,200,200)',
+    shadowRadius: 121,
   },
 
 })
