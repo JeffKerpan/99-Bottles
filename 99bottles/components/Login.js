@@ -1,28 +1,9 @@
-import React, {
-  Component
-} from 'react';
-import {
-  TextInput,
-  AppRegistry,
-  Button,
-  StyleSheet,
-  Text,
-  View,
-  TouchableHighlight,
-  TouchableOpacity,
-  Image,
-  AsyncStorage,
-  ScrollView,
-  Animated,
-  Easing
-} from 'react-native';
-import {
-  StackNavigator
-} from 'react-navigation';
+import React, {Component} from 'react';
+import {TextInput, AppRegistry, Button, StyleSheet, Text, View, TouchableHighlight, TouchableOpacity, Image, AsyncStorage, ScrollView, Animated, Easing} from 'react-native';
+import {StackNavigator} from 'react-navigation';
 import style from '../styles/stylecomp.js';
-import {
-  Font
-} from 'expo';
+import {Font} from 'expo';
+import {BoxShadow} from 'react-native-shadow';
 
 import axios from 'axios';
 
@@ -54,6 +35,8 @@ export default class Login extends Component {
     this.onSignUp = this.onSignUp.bind(this);
     this.onLogIn = this.onLogIn.bind(this);
   }
+
+
 
   async componentDidMount() {
     await Font.loadAsync({
@@ -108,7 +91,7 @@ export default class Login extends Component {
     // console.log(this.props.navigation.state.params.user_id);
     try {
       let response = await
-      fetch(`https://bottles99-api.herokuapp.com/users/login`, {
+      fetch(`http://localhost:3200/users/login`, {
           method: 'POST',
           headers: {
             'Accept': 'application/json',
@@ -188,7 +171,7 @@ export default class Login extends Component {
   clink = {
     fadeAnim: new Animated.Value(380),
     fadeAnim2: new Animated.Value(225),
-    rotateAnim: new Animated.Value(0),
+    showText: new Animated.Value(0),
     rotateAnim2: new Animated.Value(0)
   }
 
@@ -226,10 +209,10 @@ export default class Login extends Component {
             }
           ),
           Animated.timing(
-            this.clink.rotateAnim,
+            this.clink.showText,
             {
-              toValue: -30,
-              duration: 200,
+              toValue: 1,
+              duration: 700,
             }
           ),Animated.timing(
             this.clink.rotateAnim2,
@@ -241,10 +224,6 @@ export default class Login extends Component {
 
       ]),
     ]).start();
-    this.state.rotate = this.clink.rotateAnim.interpolate({
-      inputRange: [0, 30],
-      outputRange: ['0deg', '30deg']
-    })
     this.state.rotate2 = this.clink.rotateAnim2.interpolate({
       inputRange: [0, 30],
       outputRange: ['0deg', '30deg']
@@ -271,7 +250,7 @@ export default class Login extends Component {
     let {
       fadeAnim,
       fadeAnim2,
-      rotateAnim,
+      showText,
       rotateAnim2
     } = this.clink;
     const AnimateStyle = {
@@ -289,8 +268,36 @@ export default class Login extends Component {
       //  'right': 10,
       // from 225 to -18, then back to 10
       'right': fadeAnim2
+    }
+    const ShowCheeseText = {
 
     }
+    const nextRoundStyle = {
+      'opacity': showText,
+      'width': '50%',
+      'height': 50,
+      'left': '43%',
+      'marginTop': 100,
+      // 'marginBottom': 10,
+      // 'alignContent': 'center',
+      'backgroundColor': 'rgba(0,0,0,0)'
+    }
+    const nextRoundText = {
+      'color': 'rgb(0,0,0)',
+      'fontSize': 36,
+      'fontFamily': 'ChalkboardSE-Bold',
+    }
+  //   const shadowOpt = {
+  //     width:'100%',
+  //     height:5,
+  //     color:"#000",
+  //     border:2,
+  //     radius:3,
+  //     opacity:0.2,
+  //     x:0,
+  //     y:3,
+  //     style:{marginVertical:5}
+  // }
     // <View style = {{backgroundColor: "transparent", flex: 1, top: 50}}>
     // <Text style = {style.titleStyle}>99 BOTTLES</Text>
     // <View>
@@ -303,7 +310,7 @@ export default class Login extends Component {
         <View style = {style.foamStyle}>
           <Image source={require('../styles/images/beerfoam.jpg')} style = {{width: '100%'}}><Text style ={style.titleStyle} >99 BOTTLES</Text></Image>
         </View>
-        <View style ={{left: 325}}>
+        <View style ={{left: 325, marginTop: 10}}>
           <Animated.View style={AnimateStyle}>
             <Image source = {require('../styles/images/beermug2.png')}></Image>
           </Animated.View>
@@ -311,7 +318,12 @@ export default class Login extends Component {
             <Image source = {require('../styles/images/beermug2reverse.png')}></Image>
           </Animated.View>
         </View>
-        <View style ={style.container}>
+        <Animated.View style = {nextRoundStyle}>
+          <Text style = {nextRoundText}>
+          Next rounds on me!
+          </Text>
+        </Animated.View>
+          <View style ={style.container}>
           <Text style = {style.loginCreateStyle}>Please Login or Create an Account</Text>
             <TextInput
               value = {this.state.user_name}
@@ -359,12 +371,14 @@ export default class Login extends Component {
               placeholder = 'Password'
               secrureTextEntry = {true} />
               <TouchableOpacity onPress = {this.onSignUp} >
+
                 <View style = {style.buttonStyle} >
                   <Text style = {style.buttonText} >
                   Sign Up
                   </Text>
               </View>
             </TouchableOpacity>
+
           </View>
         </View>
         </Image>

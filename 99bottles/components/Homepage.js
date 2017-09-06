@@ -50,11 +50,10 @@ export default class HomePage extends React.Component {
   }
 
   // http://localhost:3200/users/${this.state.id}
-
   // https://bottles99-api.herokuapp.com/users/${this.state.id}
 
   getBeers = () => {
-    fetch(`https://bottles99-api.herokuapp.com/users/${this.state.id}`, {
+    fetch(`http://localhost:3200/users/${this.state.id}`, {
       method: 'GET',
         headers: {
           'Accept': 'application/json',
@@ -123,7 +122,7 @@ export default class HomePage extends React.Component {
     async onCheers () {
       try {
         let response = await
-        fetch('https://bottles99-api.herokuapp.com/users/cheers', {
+        fetch('http://localhost:3200/users/cheers', {
           method: 'POST',
           headers: {
             'Accept': 'application/json',
@@ -137,7 +136,15 @@ export default class HomePage extends React.Component {
             id: this.state.id
           }),
         })
-        .then((response) => response.json())
+        .then((response) => {
+          this.setState({
+            first_name: '',
+            friend_name: '',
+            number_beers: '',
+            location_name: ''
+          })
+          return response.json()
+        })
         const beersArr = this.state.beers;
         beersArr.push(response);
         this.getBeers()
@@ -245,7 +252,7 @@ export default class HomePage extends React.Component {
             }
             </Table>
           </ScrollView>
-          <View style = {style.container}>
+          <View style = {style.container2}>
             <TextInput
               value = {this.state.first_name}
               style = {style.form}
