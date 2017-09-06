@@ -140,13 +140,18 @@ buttonStyle:{
     borderColor: 'gray',
     borderWidth: .5,
     backgroundColor: '#FFEDAA',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
     // opacity: 1,
     // left: 20,
     // alignItems: 'center',
     // justifyContent: 'center',
-    shadowColor: 'rgb(214,200,200)',
-    shadowRadius: 1000,
-    shadowOffset: {width: 10, height: 10}
+    // shadowColor: 'gray',
+    // shadowRadius: 100,
+    // shadowOffset: {width: 10, height: 10},
+    // shadowOpacity: 0.8
   },
 
 })
