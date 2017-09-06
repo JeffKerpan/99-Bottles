@@ -43,6 +43,8 @@ export default class Login extends Component {
       user_name: "",
       password: "",
       fontLoaded: false,
+      rotate: '0deg',
+      rotate2: '0deg',
       sign_up: {
         user_name: "",
         password: ""
@@ -242,7 +244,9 @@ export default class Login extends Component {
 
   clink = {
     fadeAnim: new Animated.Value(380),
-    fadeAnim2: new Animated.Value(225)
+    fadeAnim2: new Animated.Value(225),
+    rotateAnim: new Animated.Value(0),
+    rotateAnim2: new Animated.Value(0)
   }
 
   componentDidMount() {
@@ -252,14 +256,14 @@ export default class Login extends Component {
           this.clink.fadeAnim,
           {
             toValue: 138,
-            duration: 2000,
+            duration: 1500,
           }
         ),
         Animated.timing(
           this.clink.fadeAnim2,
           {
             toValue: -18,
-            duration: 2000,
+            duration: 1500,
           }
         ),
         ]),
@@ -278,10 +282,33 @@ export default class Login extends Component {
               duration: 400,
             }
           ),
+          Animated.timing(
+            this.clink.rotateAnim,
+            {
+              toValue: -30,
+              duration: 200,
+            }
+          ),Animated.timing(
+            this.clink.rotateAnim2,
+            {
+              toValue: 30,
+              duration: 200,
+            }
+          ),
 
       ]),
     ]).start();
+    this.state.rotate = this.clink.rotateAnim.interpolate({
+      inputRange: [0, 30],
+      outputRange: ['0deg', '30deg']
+    })
+    this.state.rotate2 = this.clink.rotateAnim2.interpolate({
+      inputRange: [0, 30],
+      outputRange: ['0deg', '30deg']
+    })
   }
+
+
 
   //   Animated.timing(
   //     // Animate over time
@@ -300,7 +327,9 @@ export default class Login extends Component {
   render() {
     let {
       fadeAnim,
-      fadeAnim2
+      fadeAnim2,
+      rotateAnim,
+      rotateAnim2
     } = this.clink;
     const AnimateStyle = {
       'width': 50,
@@ -308,7 +337,7 @@ export default class Login extends Component {
       // 'left': 166,
       // from 380 to 138, then back to 166
       'left': fadeAnim
-      // 'transform': 'translateX(10)',
+
     }
     const AnimateStyle2 = {
       'width': 50,
@@ -319,16 +348,24 @@ export default class Login extends Component {
       //  'right': 10,
       // from 225 to -18, then back to 10
       'right': fadeAnim2
-      //  'transform': [{translateY: 180}]
+
     }
+    // <View style = {{backgroundColor: "transparent", flex: 1, top: 50}}>
+    // <Text style = {style.titleStyle}>99 BOTTLES</Text>
+    // <View>
     return (
       // <View style = {style.container}>
       // {this.state.fontLoaded ? (
       // <View style = {{alignItems: 'center', backgroundColor: '#FFDF64', flex: 1}}>
       <Image source={require('../styles/images/background.png')} style = {style.backGround} resizeMode={Image.resizeMode.stretch}>
-        <View style = {{backgroundColor: "transparent", flex: 1, top: 50}}>
-          <Text style = {{color: 'black', fontSize: 36, marginTop: 25, marginBottom: 50, textAlign: 'center', fontFamily: 'ChalkboardSE-Bold'}}>99 BOTTLES</Text>
-          <View>
+      <View>
+        <View style = {style.foamStyle}>
+
+            <Image source={require('../styles/images/beerfoam.jpg')} style = {{width: '100%'}}><Text style = {{top: 40, zIndex: 10, fontSize: 40, backgroundColor: 'rgba(0,0,0,0)', fontFamily: 'ChalkboardSE-Bold', textAlign: 'center'}}>99 BOTTLES</Text></Image>
+
+        </View>
+
+      <View style ={{left: 325}}>
             <Animated.View style={AnimateStyle}>
               <Image source = {require('../styles/images/beermug2.png')}></Image>
             </Animated.View>
@@ -338,7 +375,7 @@ export default class Login extends Component {
             </Animated.View>
           </View>
           <View style ={style.container}>
-            <Text style = {{color:'black', fontSize: 23, marginBottom: 32, marginTop: 75,  alignContent: 'center', fontFamily: 'ChalkboardSE-Regular'}}>Please Login or Create an Account</Text>
+            <Text style = {{color:'black', fontSize: 23, marginBottom: 32, marginTop: 75,  alignContent: 'center', fontFamily: 'ChalkboardSE-Regular', backgroundColor: 'rgba(0,0,0,0)'}}>Please Login or Create an Account</Text>
 
             <TextInput
               value = {this.state.user_name}

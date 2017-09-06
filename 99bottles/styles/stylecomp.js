@@ -10,6 +10,15 @@ backGround:{
   justifyContent: 'center'
 },
 
+foamStyle: {
+  width: 1000,
+  height: 150,
+  // left: -100,
+  overflow: 'hidden',
+  alignItems: 'center',
+  backgroundColor: 'black'
+},
+
 buttonStyle:{
     width: 200,
     height:32,
@@ -21,14 +30,45 @@ buttonStyle:{
     borderRadius: 50,
     marginBottom: 10,
     marginTop: 10,
-    // marginLeft: 4
 
+    // marginLeft: 4
+  },
+
+  titleStyle:{
+    width: 300,
+    height: 60,
+    backgroundColor: '#BAA349',
+    alignItems: 'center',
+    textAlign: 'center',
+    justifyContent: 'center',
+    borderColor: 'gray',
+    borderWidth: 1.5,
+    borderRadius: 50,
+    marginBottom: 10,
+    marginTop: 10,
+    color: 'black',
+    fontSize: 36,
+    fontFamily: 'ChalkboardSE-Bold'
+  },
+
+  tableStyle: {
+    width: 700
+  },
+
+  tableHead: {
+    height: 40,
+    backgroundColor: '#f1f8ff'
+  },
+
+  tableText: {
+    marginLeft: 5
 
   },
 
-  // bottles:{
-  //
-  // }
+  tableRow: {
+    height: 30,
+    backgroundColor: 'gray'
+  },
 
   container: {
     flex: 1,

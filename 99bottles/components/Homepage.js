@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
-import { TextInput, NumericInput, AppRegistry, Button, StyleSheet, Text, View, TouchableHighlight, TouchableOpacity, Image, AsyncStorage, ScrollView, Animated, Easing, NativeModules } from 'react-native';
+import { TextInput, NumericInput, AppRegistry, Button, StyleSheet, Text, View, TouchableHighlight, TouchableOpacity, Image, AsyncStorage, ScrollView, Animated, Easing, NativeModules, Platform } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import style from '../styles/stylecomp.js';
 import { Font } from 'expo';
 import resolveAssetSource from 'resolveAssetSource';
+import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
+// import Table from 'react-native-simple-table';
+// import DataFactory from '../mock/DataFactory';
+
 // const HEADER_PATTERN = resolveAssetSource(require('../styles/images/beerfoam.png'));
 
 export default class HomePage extends React.Component {
@@ -182,31 +186,64 @@ export default class HomePage extends React.Component {
   //#FFDF64
 
 
+  // <ScrollView style={{flex: 2}}>
+  // <Text>NUMBER of BEERS </Text><Text> NAME </Text><Text> FROM </Text><Text> LOCATION </Text>
+  //   {
+  //     this.state.beers.map((e, i) => {
+  //       console.log(e);
+  //       return (
+  //
+  //         <View style= {{flexDirection:'row', justifyContent:'space-between',justifyContent: 'space-around', marginBottom: 5}} key ={i}>
+  //
+  //
+  //             <Text>{e.number_beers}</Text>
+  //
+  //             <Text>{e.first_name}</Text>
+  //
+  //             <Text>{e.friend_name}</Text>
+  //
+  //             <Text>{e.location_name}</Text>
+  //         </View>
+  //       )
+  //     })
+  //   }
+  // </ScrollView>
+
+
+
+
+
+
   render() {
+    const tableHead = ['NUMBER OF BEERS', 'NAME', 'FROM', 'LOCATION'];
     return (
+
       // <View style = {{flex: 1}}>
       <Image source={require('../styles/images/background.png')} style = {style.backGround} resizeMode={Image.resizeMode.stretch}>
         <View  style = {{justifyContent: 'center', alignItems: 'center', backgroundColor: 'transparent', flex: 1, marginTop: 0}}>
+
           <ScrollView style={{flex: 2}}>
-          <Text>NUMBER of BEERS </Text><Text> NAME </Text><Text> FROM </Text><Text> LOCATION </Text>
+
+          <Table style={style.tableStyle} borderStyle={{borderWidth: 0.5, borderColor: '#c8e1ff'}}>
+          <Row data={tableHead} style={style.tableHead} textStyle={style.tableText}/>
             {
               this.state.beers.map((e, i) => {
-                console.log(e);
+                console.log([e.number_beers, e.first_name, e.friend_name, e.location_name]);
+                const tableData = [
+                  [e.number_beers, e.first_name, e.friend_name, e.location_name]
+                ];
                 return (
-                  <View style= {{flexDirection:'row', justifyContent:'space-between',justifyContent: 'space-around', marginBottom: 5}} key ={i}>
+                  <View key ={i}>
+                    <Rows data= {tableData} style={style.tableRow} textStyle={style.tableText}/>
+                </View>
 
-                      <Text>{e.number_beers}</Text>
 
-                      <Text>{e.first_name}</Text>
-
-                      <Text>{e.friend_name}</Text>
-
-                      <Text>{e.location_name}</Text>
-                  </View>
                 )
               })
             }
+            </Table>
           </ScrollView>
+
           <View style = {style.container}>
           <TextInput
             value = {this.state.first_name}
@@ -250,6 +287,7 @@ export default class HomePage extends React.Component {
           </View>
         </View>
       </Image>
+
     );
   }
 }
