@@ -229,7 +229,7 @@ export default class HomePage extends React.Component {
 
 
   render() {
-    const tableHead = ['BEERS', 'NAME', 'FROM', 'LOCATION'];
+    const tableHead = ['FROM', 'FOR', 'BEERS', 'LOCATION'];
     return (
       // <View style = {{flex: 1}}>
       <Image source={require('../styles/images/background.png')} style = {style.backGround} resizeMode={Image.resizeMode.stretch}>
@@ -239,9 +239,9 @@ export default class HomePage extends React.Component {
             <Row data={tableHead} style={style.tableHead} textStyle={style.tableHeadText}/>
             {
               this.state.beers.map((e, i) => {
-                console.log([e.number_beers, e.first_name, e.friend_name, e.location_name]);
+                console.log([e.first_name, e.friend_name, e.number_beers, e.location_name]);
                 const tableData = [
-                  [e.number_beers, e.friend_name, e.first_name, e.location_name]
+                  [e.first_name, e.friend_name, e.number_beers, e.location_name]
                 ];
                 return (
                   <View key ={i}>

@@ -70,7 +70,7 @@ buttonStyle:{
   },
 
   tableStyle: {
-    width: 700,
+    width: 650,
     // height: 340,
     borderWidth: 0.5,
     marginBottom: 25,
