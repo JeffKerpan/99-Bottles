@@ -49,6 +49,10 @@ buttonStyle:{
     borderRadius: 50,
     marginBottom: 10,
     marginTop: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.6,
+    shadowRadius: 1.5,
   },
 
   buttonText: {
@@ -141,9 +145,9 @@ buttonStyle:{
     borderWidth: .5,
     backgroundColor: '#FFEDAA',
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.8,
-    shadowRadius: 2,
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.6,
+    shadowRadius: 1.5,
     // opacity: 1,
     // left: 20,
     // alignItems: 'center',
