@@ -272,14 +272,14 @@ export default class Login extends Component {
             this.clink.fadeAnim,
             {
               toValue: 166,
-              duration: 400,
+              duration: 200,
             }
           ),
           Animated.timing(
             this.clink.fadeAnim2,
             {
               toValue: 10,
-              duration: 400,
+              duration: 200,
             }
           ),
           Animated.timing(
@@ -342,8 +342,6 @@ export default class Login extends Component {
     const AnimateStyle2 = {
       'width': 50,
       'height': 50,
-      //  'alignContent': 'center',
-      //  'justifyContent': 'center',
       'bottom': 50,
       //  'right': 10,
       // from 225 to -18, then back to 10
@@ -358,25 +356,20 @@ export default class Login extends Component {
       // {this.state.fontLoaded ? (
       // <View style = {{alignItems: 'center', backgroundColor: '#FFDF64', flex: 1}}>
       <Image source={require('../styles/images/background.png')} style = {style.backGround} resizeMode={Image.resizeMode.stretch}>
-      <View>
+        <View>
         <View style = {style.foamStyle}>
-
-            <Image source={require('../styles/images/beerfoam.jpg')} style = {{width: '100%'}}><Text style = {{top: 40, zIndex: 10, fontSize: 40, backgroundColor: 'rgba(0,0,0,0)', fontFamily: 'ChalkboardSE-Bold', textAlign: 'center'}}>99 BOTTLES</Text></Image>
-
+          <Image source={require('../styles/images/beerfoam.jpg')} style = {{width: '100%'}}><Text style ={style.titleStyle} >99 BOTTLES</Text></Image>
         </View>
-
-      <View style ={{left: 325}}>
-            <Animated.View style={AnimateStyle}>
-              <Image source = {require('../styles/images/beermug2.png')}></Image>
-            </Animated.View>
-
-            <Animated.View style={AnimateStyle2}>
-              <Image source = {require('../styles/images/beermug2reverse.png')}></Image>
-            </Animated.View>
-          </View>
-          <View style ={style.container}>
-            <Text style = {{color:'black', fontSize: 23, marginBottom: 32, marginTop: 75,  alignContent: 'center', fontFamily: 'ChalkboardSE-Regular', backgroundColor: 'rgba(0,0,0,0)'}}>Please Login or Create an Account</Text>
-
+        <View style ={{left: 325}}>
+          <Animated.View style={AnimateStyle}>
+            <Image source = {require('../styles/images/beermug2.png')}></Image>
+          </Animated.View>
+          <Animated.View style={AnimateStyle2}>
+            <Image source = {require('../styles/images/beermug2reverse.png')}></Image>
+          </Animated.View>
+        </View>
+        <View style ={style.container}>
+          <Text style = {style.loginCreateStyle}>Please Login or Create an Account</Text>
             <TextInput
               value = {this.state.user_name}
               style = {style.form}
@@ -390,9 +383,9 @@ export default class Login extends Component {
               this.setState({password: value.trim()})}
               placeholder = 'Password'
               secrureTextEntry = {true} />
-              <TouchableOpacity onPress = {this.onLogIn}>
-                <View style = {style.buttonStyle} >
-                  <Text style = {{color: 'black', fontFamily: 'ChalkboardSE-Bold'}} >
+              <TouchableOpacity onPress =     {this.onLogIn}>
+                <View style = {style.buttonStyle}>
+                  <Text style = {style.buttonText}>
                   Log In
                   </Text>
                 </View>
@@ -424,7 +417,7 @@ export default class Login extends Component {
               secrureTextEntry = {true} />
               <TouchableOpacity onPress = {this.onSignUp} >
                 <View style = {style.buttonStyle} >
-                  <Text style = {{color: 'black', fontFamily: 'ChalkboardSE-Bold'}} >
+                  <Text style = {style.buttonText} >
                   Sign Up
                   </Text>
               </View>
