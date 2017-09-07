@@ -91,7 +91,7 @@ export default class Login extends Component {
     // console.log(this.props.navigation.state.params.user_id);
     try {
       let response = await
-      fetch(`http://localhost:3200/users/login`, {
+      fetch(`https://bottles99-api.herokuapp.com/users/login`, {
           method: 'POST',
           headers: {
             'Accept': 'application/json',
@@ -104,10 +104,13 @@ export default class Login extends Component {
 
         })
         .then((response) => {
-          response.json()
-          this.props.navigation.navigate('Profile', {})
-
+          this.setState({
+            user_name: '',
+            password: '',
+          })
+          return response.json()
         })
+        this.props.navigation.navigate('Profile', {})
 
       // .then(cleanRes => cleanRes)
 
@@ -131,7 +134,7 @@ export default class Login extends Component {
   async onSignUp() {
     // console.log(this.state);
     try {
-      let response = await fetch('http://localhost:3200/users/new', {
+      let response = await fetch('https://bottles99-api.herokuapp.com/users/new', {
           method: 'POST',
           headers: {
             'Accept': 'application/json',
@@ -261,7 +264,7 @@ export default class Login extends Component {
     }
     const nextRoundStyle = {
       'opacity': showText,
-      'width': '50%',
+      'width': '70%',
       'height': 50,
       'left': '43%',
       'marginTop': 100,
@@ -274,6 +277,8 @@ export default class Login extends Component {
       'fontSize': 36,
       'fontFamily': 'ChalkboardSE-Bold',
     }
+    const beerMe = "Next round's on me!"
+
   //   const shadowOpt = {
   //     width:'100%',
   //     height:5,
@@ -307,7 +312,7 @@ export default class Login extends Component {
         </View>
         <Animated.View style = {nextRoundStyle}>
           <Text style = {nextRoundText}>
-          Next rounds on me!
+            {beerMe}
           </Text>
         </Animated.View>
           <View style ={style.container}>

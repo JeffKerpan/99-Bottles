@@ -127,7 +127,8 @@ buttonStyle:{
     alignItems: 'center',
     justifyContent: 'center',
     paddingTop: 10,
-    paddingBottom: 10
+    paddingBottom: 0,
+    width: 200
   },
 
   container: {

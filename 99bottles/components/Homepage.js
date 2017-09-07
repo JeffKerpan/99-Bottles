@@ -53,7 +53,7 @@ export default class HomePage extends React.Component {
   // https://bottles99-api.herokuapp.com/users/${this.state.id}
 
   getBeers = () => {
-    fetch(`http://localhost:3200/users/${this.state.id}`, {
+    fetch(`https://bottles99-api.herokuapp.com/users/${this.state.id}`, {
       method: 'GET',
         headers: {
           'Accept': 'application/json',
@@ -122,7 +122,7 @@ export default class HomePage extends React.Component {
     async onCheers () {
       try {
         let response = await
-        fetch('http://localhost:3200/users/cheers', {
+        fetch('https://bottles99-api.herokuapp.com/users/cheers', {
           method: 'POST',
           headers: {
             'Accept': 'application/json',

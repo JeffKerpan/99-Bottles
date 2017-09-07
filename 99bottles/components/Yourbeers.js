@@ -126,6 +126,11 @@ render() {
   "number_beers": 3,
 },
 {
+ "friend_name": "Shannon",
+ "location_name": "Sanitas",
+ "number_beers": 2,
+},
+{
  "friend_name": "Sol",
  "location_name": "Shmaltz Brewing",
  "number_beers": 3,
