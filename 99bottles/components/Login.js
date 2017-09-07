@@ -11,7 +11,7 @@ export default class Login extends Component {
 
   // Top of page title/naviation
   static navigationOptions = {
-    title: 'Login',
+    title: '99 Bottles',
     header: null
   }
 
@@ -105,7 +105,7 @@ export default class Login extends Component {
         })
         .then((response) => {
           response.json()
-          this.props.navigation.navigate('Main', {})
+          this.props.navigation.navigate('Profile', {})
 
         })
 
@@ -147,7 +147,7 @@ export default class Login extends Component {
         .then((response) => response.json())
         .then(cleanRes => cleanRes)
 
-      AsyncStorage.setItem('auth', JSON.stringify(response[0]), () => this.props.navigation.navigate('Main', {}))
+      AsyncStorage.setItem('auth', JSON.stringify(response[0]), () => this.props.navigation.navigate('Profile', {}))
 
       // this.props.navigation.navigate('Main', {userId: this.state.id}))
 

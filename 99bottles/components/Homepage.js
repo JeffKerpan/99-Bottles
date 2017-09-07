@@ -62,7 +62,7 @@ export default class HomePage extends React.Component {
     })
     .then(response => response.json())
     .then(res => {
-      console.log(res);
+      console.log(res, 'TAZ');
       // res = res.split(' ').map(e => e.location_name[0].toUpperCase() + e.location_name.slice(1)).join(' ');
       res.forEach(function(each) {
         each.location_name =  each.location_name.split(' ').map(e => e[0].toUpperCase() + e.slice(1)).join(' ');
@@ -225,23 +225,23 @@ export default class HomePage extends React.Component {
 
 
 
-
+// console.log([e.first_name, e.friend_name, e.number_beers, e.location_name]);
 
 
   render() {
-    const tableHead = ['FROM', 'FOR', 'BEERS', 'LOCATION'];
+    const tableHead = ['FOR', 'BEERS', 'LOCATION'];
     return (
       // <View style = {{flex: 1}}>
       <Image source={require('../styles/images/background.png')} style = {style.backGround} resizeMode={Image.resizeMode.stretch}>
+      <Text style = {style.yourBeersStyle}>Beers For Friends</Text>
         <View style = {style.homePageStyle}>
           <ScrollView style={{flex: 2}}>
             <Table style={style.tableStyle}>
             <Row data={tableHead} style={style.tableHead} textStyle={style.tableHeadText}/>
             {
               this.state.beers.map((e, i) => {
-                console.log([e.first_name, e.friend_name, e.number_beers, e.location_name]);
                 const tableData = [
-                  [e.first_name, e.friend_name, e.number_beers, e.location_name]
+                  [e.friend_name, e.number_beers, e.location_name]
                 ];
                 return (
                   <View key ={i}>

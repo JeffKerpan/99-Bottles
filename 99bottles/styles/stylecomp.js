@@ -38,6 +38,16 @@ loginCreateStyle: {
   fontFamily: 'ChalkboardSE-Regular', backgroundColor: 'rgba(0,0,0,0)'
 },
 
+yourBeersStyle: {
+  color:'black',
+  fontSize: 32,
+  marginBottom: 20,
+  marginTop: 10,
+  alignContent: 'center',
+  justifyContent: 'center',
+  fontFamily: 'ChalkboardSE-Regular', backgroundColor: 'rgba(0,0,0,0)'
+},
+
 buttonStyle:{
     width: 250,
     height:36,
