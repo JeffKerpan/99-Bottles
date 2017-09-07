@@ -95,11 +95,6 @@ render() {
     "location_name": "Backcountry",
     "number_beers": 3,
   },
-  {
-   "friend_name": "Jodie",
-   "location_name": "Odd 13",
-   "number_beers": 99,
- },
    {
     "friend_name": "Taz",
     "location_name": "Upslope",
@@ -110,25 +105,65 @@ render() {
    "location_name": "Avery",
    "number_beers": 4,
  },
+ {
+  "friend_name": "Jodie",
+  "location_name": "Odd 13",
+  "number_beers": 99,
+},
    {
     "friend_name": "Tucker",
     "location_name": "Sanitas",
     "number_beers": 2,
   },
   {
+   "friend_name": "Jordan",
+   "location_name": "Finkle & Garf",
+   "number_beers": 1,
+ },
+  {
    "friend_name": "Teddi",
    "location_name": "West Flanders",
    "number_beers": 5,
  },
  {
+  "friend_name": "GP",
+  "location_name": "Twisted Pine",
+  "number_beers": 2,
+ },
+ {
+  "friend_name": "Shelby",
+  "location_name": "J Wells",
+  "number_beers": 3,
+},
+ {
   "friend_name": "Kashi",
   "location_name": "Boulder Beer",
-  "number_beers": 3,
+  "number_beers": 1,
+},
+{
+ "friend_name": "Adam",
+ "location_name": "Vision Quest",
+ "number_beers": 2,
 },
 {
  "friend_name": "Shannon",
  "location_name": "Sanitas",
  "number_beers": 2,
+},
+{
+ "friend_name": "Arlo",
+ "location_name": "Crooked Stave",
+ "number_beers": 1,
+},
+{
+ "friend_name": "David",
+ "location_name": "Asher",
+ "number_beers": 2,
+},
+{
+ "friend_name": "Sean",
+ "location_name": "Celler West",
+ "number_beers": 3,
 },
 {
  "friend_name": "Sol",
@@ -142,12 +177,11 @@ render() {
     <Image source={require('../styles/images/background.png')} style = {style.backGround} resizeMode={Image.resizeMode.stretch}>
       <View style = {style.homePageStyle}>
         <Text style = {style.yourBeersStyle}>Beers From Friends</Text>
-        <ScrollView style={{flex: 2}}>
-          <Table style={style.tableStyle}>
+        <ScrollView style={{height: 280}}>
+          <Table style={style.tableStyle2}>
           <Row data={tableHead} style={style.tableHead} textStyle={style.tableHeadText}/>
           {
             dataFromSever.map((e, i) => {
-              console.log([e.number_beers, e.friend_name,  e.location_name]);
               const tableData = [
                 [e.friend_name, e.number_beers, e.location_name]
               ];
@@ -165,7 +199,7 @@ render() {
         <TouchableOpacity onPress = {this.onBuyBeers} >
           <View style = {style.buttonStyle} >
             <Text style = {style.buttonText} >
-            BUY BEER
+            BUY BEERS
             </Text>
           </View>
         </TouchableOpacity>

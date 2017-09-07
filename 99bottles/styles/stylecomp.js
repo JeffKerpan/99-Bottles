@@ -82,8 +82,17 @@ buttonStyle:{
   tableStyle: {
     width: 650,
     // height: 340,
-    borderWidth: 0.5,
-    marginBottom: 25,
+    // borderWidth: 0.5,
+    // marginBottom: 25,
+    shadowColor: 'rgb(214,200,200)',
+    shadowRadius: 12,
+  },
+
+  tableStyle2: {
+    width: 650,
+    // height: 500,
+    // borderWidth: 0.5,
+    // marginBottom: 50,
     shadowColor: 'rgb(214,200,200)',
     shadowRadius: 12,
   },

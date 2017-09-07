@@ -62,7 +62,7 @@ export default class HomePage extends React.Component {
     })
     .then(response => response.json())
     .then(res => {
-      console.log(res, 'TAZ');
+      // console.log(res, 'TAZ');
       // res = res.split(' ').map(e => e.location_name[0].toUpperCase() + e.location_name.slice(1)).join(' ');
       res.forEach(function(each) {
         each.location_name =  each.location_name.split(' ').map(e => e[0].toUpperCase() + e.slice(1)).join(' ');
@@ -223,7 +223,12 @@ export default class HomePage extends React.Component {
   //   }
   // </ScrollView>
 
-
+  // <TextInput
+  //   value = {this.state.first_name}
+  //   style = {style.form}
+  //   onChangeText = {(value) =>
+  //   this.setState({first_name: value.trim()})}
+  //   placeholder = 'Your First Name' />
 
 // console.log([e.first_name, e.friend_name, e.number_beers, e.location_name]);
 
@@ -253,12 +258,6 @@ export default class HomePage extends React.Component {
             </Table>
           </ScrollView>
           <View style = {style.container2}>
-            <TextInput
-              value = {this.state.first_name}
-              style = {style.form}
-              onChangeText = {(value) =>
-              this.setState({first_name: value.trim()})}
-              placeholder = 'Your First Name' />
             <TextInput
               value = {this.state.friend_name}
               style = {style.form}
