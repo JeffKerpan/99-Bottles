@@ -149,22 +149,9 @@ export default class Login extends Component {
 
       AsyncStorage.setItem('auth', JSON.stringify(response[0]), () => this.props.navigation.navigate('Profile', {}))
 
-      // this.props.navigation.navigate('Main', {userId: this.state.id}))
-
-
     } catch (error) {
       console.log(error, 'there was an signup error');
     }
-    // let jsonResponse = await response.json()
-    // this.setState({id:jsonResponse[0].id}, async() => {
-    //   let userId = this.state.id.toString()
-    //   try {
-    //     await AsyncStorage.setItem('@UserId:key', userId);
-    //   } catch (errorAsyncStorage) {
-    //     console.log(errorAsyncStorage);
-    //   }
-    // });
-    // .then(() => this.setState({  }));
   }
   // console.log(this.state.login);
 
@@ -337,7 +324,7 @@ export default class Login extends Component {
               onChangeText = {(value) =>
               this.setState({password: value.trim()})}
               placeholder = 'Password'
-              secrureTextEntry = {true} />
+              secureTextEntry = {true} />
               <TouchableOpacity onPress =     {this.onLogIn}>
                 <View style = {style.buttonStyle}>
                   <Text style = {style.buttonText}>
@@ -361,15 +348,15 @@ export default class Login extends Component {
               value = {this.state.sign_up.user_name}
               style = {style.form}
               onChangeText = {(value) =>
-              this.setState({sign_up: {user_name: value.trim(), password: this.state.sign_up.password}})}
+              this.setState({sign_up: value.trim()})}
               placeholder = 'Username' />
             <TextInput
               value = {this.state.sign_up.password}
               style = {style.form}
               onChangeText = {(value) =>
-              this.setState({sign_up: {password: value.trim(), user_name: this.state.sign_up.user_name}})}
+              this.setState({sign_up: value.trim()})}
               placeholder = 'Password'
-              secrureTextEntry = {true} />
+              secureTextEntry = {true} />
               <TouchableOpacity onPress = {this.onSignUp} >
 
                 <View style = {style.buttonStyle} >
