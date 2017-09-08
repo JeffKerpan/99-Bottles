@@ -12,17 +12,18 @@ backGround:{
 
 foamStyle: {
   width: 1000,
-  height: 150,
+  // height: 123,
   // left: -100,
-  overflow: 'hidden',
+  // overflow: 'hidden',
   alignItems: 'center',
-  backgroundColor: 'black'
+  // backgroundColor: 'black'
 },
 
 titleStyle: {
-  top: 40,
+  marginTop: 36,
+  marginBottom: 30,
   zIndex: 10,
-  fontSize: 40,
+  fontSize: 45,
   backgroundColor: 'rgba(0,0,0,0)',
   fontFamily: 'ChalkboardSE-Bold',
   textAlign: 'center'
@@ -30,10 +31,21 @@ titleStyle: {
 
 loginCreateStyle: {
   color:'black',
-  fontSize: 23,
-  marginBottom: 32,
-  marginTop: 75,
+  fontSize: 21,
+  marginBottom: 20,
+  marginTop: 50,
   alignContent: 'center',
+  justifyContent: 'center',
+  fontFamily: 'ChalkboardSE-Regular', backgroundColor: 'rgba(0,0,0,0)'
+},
+
+yourBeersStyle: {
+  color:'black',
+  fontSize: 32,
+  marginBottom: 30,
+  marginTop: 10,
+  alignContent: 'center',
+  justifyContent: 'center',
   fontFamily: 'ChalkboardSE-Regular', backgroundColor: 'rgba(0,0,0,0)'
 },
 
@@ -46,8 +58,12 @@ buttonStyle:{
     borderColor: "grey",
     borderWidth: 1.5,
     borderRadius: 50,
-    marginBottom: 10,
+    marginBottom: 15,
     marginTop: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.8,
+    shadowRadius: 1.6,
   },
 
   buttonText: {
@@ -65,28 +81,34 @@ buttonStyle:{
   },
 
   tableStyle: {
-    width: 700,
+    width: 650,
     // height: 340,
-    borderWidth: 0.5,
+    // borderWidth: 0.5,
+    // marginBottom: 25,
+    shadowColor: 'rgb(214,200,200)',
+    shadowRadius: 12,
+  },
+
+  tableStyle2: {
+    width: 650,
+    // height: 500,
+    // borderWidth: 0.5,
+    // marginBottom: 50,
     shadowColor: 'rgb(214,200,200)',
     shadowRadius: 12,
   },
 
   tableHead: {
     height: 60,
-    backgroundColor: '#f1f8ff',
-    // #f0f0f0
-    // #fff
-    // #333
-    // #DFF5F2
-
+    backgroundColor: 'black',
   },
 
   tableHeadText: {
     marginLeft: 5,
     fontFamily: 'ChalkboardSE-Bold',
     fontSize: 23,
-    color: 'rgb(25,25,25)',
+    color: 'white',
+    justifyContent: 'center'
   },
 
   tableText: {
@@ -98,29 +120,52 @@ buttonStyle:{
 
   tableRow: {
     height: 40,
-    backgroundColor: 'rgb(200,200,200)',
+    backgroundColor: 'rgb(236, 236, 236)',
+  },
+
+  containerNextRound: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: 10,
+    paddingBottom: 0,
+    width: 200
   },
 
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
-    paddingTop: 20,
-    paddingBottom: 100
+    paddingTop: 15,
+    paddingBottom: 250
+  },
+
+  container2: {
+    flex: 1,
+    alignItems: 'center',
+    paddingTop: 75,
+    // paddingBottom: 250
   },
 
   form: {
     height:40,
-    width: 275,
-    padding: 10,
-    marginBottom: 4,
-    borderColor: 'gray',
+    width: 300,
+    padding: 20,
+    marginBottom: 5,
+    borderColor: 'rgba(0, 0, 0, 1)',
     borderWidth: .5,
     backgroundColor: '#FFEDAA',
-    alignItems: 'center',
-    justifyContent: 'center',
-    shadowColor: 'rgb(214,200,200)',
-    shadowRadius: 121,
-  },
+    shadowColor: '#000',
+    shadowOffset: { width: 3, height: 3 },
+    shadowOpacity: 0.7,
+    shadowRadius: 1,
+    // opacity: 1,
+    // left: 20,
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    // shadowColor: 'gray',
+    // shadowRadius: 100,
+    // shadowOffset: {width: 10, height: 10},
+    // shadowOpacity: 0.8
+  }
 
 })
