@@ -198,7 +198,7 @@ render() {
         <Text style = {style.yourBeersStyle}>
         Beers From Friends
         </Text>
-        <ScrollView style={{height: 280}}>
+        <ScrollView style={{height: 292}}>
           <Table style={style.tableStyle2}>
           <Row data={tableHead} style={style.tableHead} textStyle={style.tableHeadText}/>
           {
@@ -221,7 +221,7 @@ render() {
           <TouchableOpacity onPress = {this.onBuyBeers}>
           <View style = {style.buttonStyle}>
             <Text style = {style.buttonText}>
-            BUY BEERS
+            Buy Beers
             </Text>
           </View>
           </TouchableOpacity>
