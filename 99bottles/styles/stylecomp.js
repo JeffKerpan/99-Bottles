@@ -12,15 +12,16 @@ backGround:{
 
 foamStyle: {
   width: 1000,
-  height: 123,
+  // height: 123,
   // left: -100,
-  overflow: 'hidden',
+  // overflow: 'hidden',
   alignItems: 'center',
-  backgroundColor: 'black'
+  // backgroundColor: 'black'
 },
 
 titleStyle: {
-  top: 25,
+  marginTop: 36,
+  marginBottom: 30,
   zIndex: 10,
   fontSize: 45,
   backgroundColor: 'rgba(0,0,0,0)',
@@ -41,7 +42,7 @@ loginCreateStyle: {
 yourBeersStyle: {
   color:'black',
   fontSize: 32,
-  marginBottom: 20,
+  marginBottom: 30,
   marginTop: 10,
   alignContent: 'center',
   justifyContent: 'center',
@@ -57,12 +58,12 @@ buttonStyle:{
     borderColor: "grey",
     borderWidth: 1.5,
     borderRadius: 50,
-    marginBottom: 10,
+    marginBottom: 15,
     marginTop: 10,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.6,
-    shadowRadius: 1.5,
+    shadowOpacity: 0.8,
+    shadowRadius: 1.6,
   },
 
   buttonText: {
@@ -100,15 +101,6 @@ buttonStyle:{
   tableHead: {
     height: 60,
     backgroundColor: 'black',
-
-    // #f0f0f0
-    // #fff
-    // #333
-    // #DFF5F2
-    // #a59972
-    // #6b6244
-    // #a59972
-
   },
 
   tableHeadText: {
@@ -143,7 +135,6 @@ buttonStyle:{
   container: {
     flex: 1,
     alignItems: 'center',
-    // justifyContent: 'center',
     paddingTop: 15,
     paddingBottom: 250
   },
@@ -151,7 +142,6 @@ buttonStyle:{
   container2: {
     flex: 1,
     alignItems: 'center',
-    // justifyContent: 'center',
     paddingTop: 75,
     // paddingBottom: 250
   },
@@ -159,15 +149,15 @@ buttonStyle:{
   form: {
     height:40,
     width: 300,
-    padding: 10,
-    marginBottom: 4,
-    borderColor: 'gray',
+    padding: 20,
+    marginBottom: 5,
+    borderColor: 'rgba(0, 0, 0, 1)',
     borderWidth: .5,
     backgroundColor: '#FFEDAA',
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.6,
-    shadowRadius: 1.5,
+    shadowOffset: { width: 3, height: 3 },
+    shadowOpacity: 0.7,
+    shadowRadius: 1,
     // opacity: 1,
     // left: 20,
     // alignItems: 'center',
@@ -176,6 +166,6 @@ buttonStyle:{
     // shadowRadius: 100,
     // shadowOffset: {width: 10, height: 10},
     // shadowOpacity: 0.8
-  },
+  }
 
 })

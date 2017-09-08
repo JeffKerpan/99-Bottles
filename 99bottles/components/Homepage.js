@@ -8,16 +8,14 @@ import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-ta
 // import Table from 'react-native-simple-table';
 // import DataFactory from '../mock/DataFactory';
 
-// const HEADER_PATTERN = resolveAssetSource(require('../styles/images/beerfoam.png'));
-
-export default class HomePage extends React.Component {
+export default class HomePage extends React.Component
+{
 
   //Title/naviation at top of page
-  static navigationOptions = { headerStyle: {backgroundColor: '#FFF6D4'}}
+  static navigationOptions = { headerStyle: {backgroundColor: 'rgb(226, 226, 226)'}}
   //backgroundColor: '#FFDF64'
-  // static navigationOptions = { navigationBarBackgroundImage={require('../styles/images/beerfoam.png')}
-  // }
 
+// Set state and bind button functions
   constructor () {
     super();
     this.state = {
@@ -33,25 +31,21 @@ export default class HomePage extends React.Component {
       // password: "",
       fontLoaded: false,
     }
-    // this.onSubmit = this.onSubmit.bind(this);
     this.onLogout = this.onLogout.bind(this);
-    // this.fadeIn = this.fadeIn.bind(this);
     this.onCheers = this.onCheers.bind(this);
   }
 
 
+// Upon logout, navigate to login page
   async onLogout (){
-    // try {
-    //   await AsyncStorage.removeItem('@UserId:key');
       this.props.navigation.navigate('Home');
-    // } catch (error) {
-    //   console.log(error);
-    // }
   }
+
 
   // http://localhost:3200/users/${this.state.id}
   // https://bottles99-api.herokuapp.com/users/${this.state.id}
 
+// GET beers information per user id
   getBeers = () => {
     fetch(`https://bottles99-api.herokuapp.com/users/${this.state.id}`, {
       method: 'GET',
@@ -63,7 +57,6 @@ export default class HomePage extends React.Component {
     .then(response => response.json())
     .then(res => {
       // console.log(res, 'TAZ');
-      // res = res.split(' ').map(e => e.location_name[0].toUpperCase() + e.location_name.slice(1)).join(' ');
       res.forEach(function(each) {
         each.location_name =  each.location_name.split(' ').map(e => e[0].toUpperCase() + e.slice(1)).join(' ');
 
@@ -74,6 +67,8 @@ export default class HomePage extends React.Component {
     })
   }
 
+
+// Get beers once component loads
   componentDidMount() {
     this.getBeers()
   //   fetch(`http://localhost:3200/users/${this.state.id}`, {
@@ -92,33 +87,11 @@ export default class HomePage extends React.Component {
   // })
 }
 
-  yourBeers (array) {
-
-
-  }
-
-  // async componentDidMount() {
-
-    // let userId = this.props.navigation.state.params.user_id;
-
-    // 1. get auth from local storage
-
-    // let response = await
-    // // users/login CORRECT ROUTE?
-    // fetch(`https://bottles99-api.herokuapp.com/users/${userId}`, {
-    //   method: 'GET',
-    //   headers: {
-    //     'Accept': 'application/json',
-    //     'Content-Type': 'application/json'
-    //   }
-    // })
-    // .then(res => res.json())
-    // .then(auth => console.log(auth))
 
     // http://localhost:3200/users/cheers
     // https://bottles99-api.herokuapp.com/users/cheers
 
-
+// Upon clicking CHEERS button, POST new information
     async onCheers () {
       try {
         let response = await
@@ -155,6 +128,7 @@ export default class HomePage extends React.Component {
         // })
 
         // AsyncStorage.setItem('auth', JSON.stringify(response[0]))
+        
       }
       catch(error) {
         console.log(error, 'there was an onCheers error');
@@ -162,93 +136,31 @@ export default class HomePage extends React.Component {
     }
 
 
-
-    // let jsonResponse = await response.json() this.setState({
-    //   id: userId
-    // })
-
-
-  // async componentDidMount() {
-  //   await Font.loadAsync({
-  //     'MuktaMalar-Bold': require('../Assets/Fonts/MuktaMalar-Bold.ttf'),
-  //     'MuktaMalar-Medium': require('../Assets/Fonts/MuktaMalar-Medium.ttf'),
-  //     'MuktaMalar-Regular': require('../Assets/Fonts/MuktaMalar-Regular.ttf'),
-  //     'MuktaMalar-SemiBold': require('../Assets/Fonts/MuktaMalar-SemiBold.ttf'),
-  //     'Rubik-Medium': require('../Assets/Fonts/Rubik-Medium.ttf'),
-  //     'Rubik-Regular': require('../Assets/Fonts/Rubik-Regular.ttf')
-  //   });
-  //   this.setState({ fontLoaded: true })
-  // }
-  // async() =>{
-  //     //DO I NEED THIS fadeIn
-  //     // this.fadeIn()
-  //     try {
-  //       const value = await
-  //       // IS UserId CORRECT?
-  //       AsyncStorage.getItem('@UserId:key');
-  //       if (value !== null) {
-  //         let userID = parseInt(value);
-  //         console.log(value, "ASYNC STORAGE");
-  //         this.props.navigation.navigate('Main',
-  //         { userId: userID })
-  //       }
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   })
-// },
-  //#FFDF64
-
-
-  // <ScrollView style={{flex: 2}}>
-  // <Text>NUMBER of BEERS </Text><Text> NAME </Text><Text> FROM </Text><Text> LOCATION </Text>
-  //   {
-  //     this.state.beers.map((e, i) => {
-  //       console.log(e);
-  //       return (
-  //
-  //         <View style= {{flexDirection:'row', justifyContent:'space-between',justifyContent: 'space-around', marginBottom: 5}} key ={i}>
-  //
-  //
-  //             <Text>{e.number_beers}</Text>
-  //
-  //             <Text>{e.first_name}</Text>
-  //
-  //             <Text>{e.friend_name}</Text>
-  //
-  //             <Text>{e.location_name}</Text>
-  //         </View>
-  //       )
-  //     })
-  //   }
-  // </ScrollView>
-
-  // <TextInput
-  //   value = {this.state.first_name}
-  //   style = {style.form}
-  //   onChangeText = {(value) =>
-  //   this.setState({first_name: value.trim()})}
-  //   placeholder = 'Your First Name' />
-
 // console.log([e.first_name, e.friend_name, e.number_beers, e.location_name]);
 
 
   render() {
+
     const tableHead = ['FOR', 'BEERS', 'LOCATION'];
+
     return (
-      // <View style = {{flex: 1}}>
-      <Image source={require('../styles/images/background.png')} style = {style.backGround} resizeMode={Image.resizeMode.stretch}>
-      <Text style = {style.yourBeersStyle}>Beers For Friends</Text>
+
+      <Image source={require('../styles/images/beer.jpg')} style = {style.backGround} resizeMode={Image.resizeMode.stretch}>
+        <Text style = {style.yourBeersStyle}>
+        Beers For Friends
+        </Text>
         <View style = {style.homePageStyle}>
           <ScrollView style={{flex: 2}}>
             <Table style={style.tableStyle}>
             <Row data={tableHead} style={style.tableHead} textStyle={style.tableHeadText}/>
             {
+// Map over beers array to pull out information to display in table
               this.state.beers.map((e, i) => {
                 const tableData = [
-                  [e.friend_name, e.number_beers, e.location_name]
-                ];
+                  [e.friend_name, e.number_beers,  e.location_name]
+                  ];
                 return (
+
                   <View key ={i}>
                     <Rows data= {tableData} style={[style.tableRow, i%2 && {backgroundColor: '#ccc19f'}]} textStyle={style.tableText}/>
                   </View>
@@ -263,23 +175,23 @@ export default class HomePage extends React.Component {
               style = {style.form}
               onChangeText = {(value) =>
               this.setState({friend_name: value.trim()})}
-              placeholder = "Friend's Name" />
+              placeholder = "Friend's Name"/>
             <TextInput
               value = {this.state.number_beers}
               style = {style.form}
               keyboardType = 'numeric'
               onChangeText = {(value) =>
               this.setState({number_beers: value.trim()})}
-              placeholder = 'Number of Beers' />
+              placeholder = 'Number of Beers'/>
             <TextInput
               value = {this.state.location_name}
               style = {style.form}
               onChangeText = {(value) =>
               this.setState({location_name: value})}
-              placeholder = 'Location Name' />
+              placeholder = 'Location Name'/>
               <TouchableOpacity onPress = {this.onCheers} >
-                <View style = {style.buttonStyle} >
-                  <Text style = {style.buttonText} >
+                <View style = {style.buttonStyle}>
+                  <Text style = {style.buttonText}>
                   CHEERS!
                   </Text>
                 </View>
@@ -294,7 +206,6 @@ export default class HomePage extends React.Component {
           </View>
         </View>
       </Image>
-
     );
   }
 }
