@@ -143,14 +143,14 @@ export default class Login extends Component {
           this.clink.fadeAnim,
           {
             toValue: 138,
-            duration: 1500,
+            duration: 1200,
           }
         ),
         Animated.timing(
           this.clink.fadeAnim2,
           {
             toValue: -18,
-            duration: 1500,
+            duration: 1200,
           }
         ),
         ]),
