@@ -83,11 +83,7 @@ export default class Login extends Component {
         this.props.navigation.navigate('Profile', {})
 
       // .then(cleanRes => cleanRes)
-
-      // AsyncStorage.setItem('auth', JSON.stringify(response[0]), () =>
-      // this.props.navigation.navigate('Main', {}))
-      // console.log('login response', response);
-
+      
     } catch (error) {
       console.log(error, 'there was a login error');
     }
@@ -123,7 +119,6 @@ export default class Login extends Component {
       console.log(error, 'there was an signup error');
     }
   }
-  // console.log(this.state.login);
 
 
 // Clink object to give starting animated values
@@ -258,14 +253,6 @@ export default class Login extends Component {
     })
   }
 
-
-// Beer foam picture
-  // <View style = {style.foamStyle}>
-  // <Image source={require('../styles/images/beerfoam.jpg')} style = {{width: '100%'}}>
-  // </Image>
-  // </View>
-
-
   render() {
 // Setting clink values to this.clink
     let {
@@ -308,12 +295,6 @@ export default class Login extends Component {
     }
 
     const beerMe = "Next round's on me!"
-
-
-    // <View style = {{backgroundColor: "transparent", flex: 1, top: 50}}>
-    // <Text style = {style.titleStyle}>99 BOTTLES</Text>
-    // <View>
-
 
     return (
 

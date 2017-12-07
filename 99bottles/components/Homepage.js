@@ -127,8 +127,6 @@ export default class HomePage extends React.Component
 
         // })
 
-        // AsyncStorage.setItem('auth', JSON.stringify(response[0]))
-        
       }
       catch(error) {
         console.log(error, 'there was an onCheers error');
