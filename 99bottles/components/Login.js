@@ -58,7 +58,6 @@ export default class Login extends Component {
 
 // Upon login, post route and then navigate to Yourbeers page
   async onLogIn() {
-    // console.log(this.props.navigation.state.params.user_id);
     try {
       let response = await
       fetch(`https://bottles99-api.herokuapp.com/users/login`, {
@@ -82,8 +81,6 @@ export default class Login extends Component {
         })
         this.props.navigation.navigate('Profile', {})
 
-      // .then(cleanRes => cleanRes)
-      
     } catch (error) {
       console.log(error, 'there was a login error');
     }

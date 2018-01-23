@@ -28,7 +28,6 @@ export default class HomePage extends React.Component
       last_name: "",
       friend_name: "",
       beers: [],
-      // password: "",
       fontLoaded: false,
     }
     this.onLogout = this.onLogout.bind(this);
@@ -56,36 +55,13 @@ export default class HomePage extends React.Component
     })
     .then(response => response.json())
     .then(res => {
-      // console.log(res, 'TAZ');
       res.forEach(function(each) {
         each.location_name =  each.location_name.split(' ').map(e => e[0].toUpperCase() + e.slice(1)).join(' ');
 
       })
-      // console.log('res', res);
-      this.setState({beers:res})
-      // console.log(this.state.beers, 'this.state.beers');
+      this.setState({beers:res});
     })
   }
-
-
-// Get beers once component loads
-  componentDidMount() {
-    this.getBeers()
-  //   fetch(`http://localhost:3200/users/${this.state.id}`, {
-  //     method: 'GET',
-  //       headers: {
-  //         'Accept': 'application/json',
-  //         'Content-Type': 'application/json'
-  //       }
-  //   })
-  //   .then(response => response.json())
-  //   .then(res => {
-  //     console.log('res');
-  //     // console.log('res', res);
-  //     this.setState({beers:res})
-  //     // console.log(this.state.beers, 'this.state.beers');
-  // })
-}
 
 
     // http://localhost:3200/users/cheers
@@ -121,20 +97,12 @@ export default class HomePage extends React.Component
         const beersArr = this.state.beers;
         beersArr.push(response);
         this.getBeers()
-        // console.log(beers);
-        // this.setState({beers})
-        // console.log(this.state);
-
-        // })
 
       }
       catch(error) {
         console.log(error, 'there was an onCheers error');
       }
     }
-
-
-// console.log([e.first_name, e.friend_name, e.number_beers, e.location_name]);
 
 
   render() {

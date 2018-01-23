@@ -12,9 +12,6 @@ backGround:{
 
 foamStyle: {
   width: 1000,
-  // height: 123,
-  // left: -100,
-  // overflow: 'hidden',
   alignItems: 'center',
   // backgroundColor: 'black'
 },
@@ -82,18 +79,12 @@ buttonStyle:{
 
   tableStyle: {
     width: 650,
-    // height: 340,
-    // borderWidth: 0.5,
-    // marginBottom: 25,
     shadowColor: 'rgb(214,200,200)',
     shadowRadius: 12,
   },
 
   tableStyle2: {
     width: 650,
-    // height: 500,
-    // borderWidth: 0.5,
-    // marginBottom: 50,
     shadowColor: 'rgb(214,200,200)',
     shadowRadius: 12,
   },
@@ -158,14 +149,7 @@ buttonStyle:{
     shadowOffset: { width: 3, height: 3 },
     shadowOpacity: 0.7,
     shadowRadius: 1,
-    // opacity: 1,
-    // left: 20,
-    // alignItems: 'center',
-    // justifyContent: 'center',
-    // shadowColor: 'gray',
-    // shadowRadius: 100,
-    // shadowOffset: {width: 10, height: 10},
-    // shadowOpacity: 0.8
+
   }
 
 })

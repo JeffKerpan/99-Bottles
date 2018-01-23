@@ -32,7 +32,6 @@ export default class HomePage extends React.Component {
       last_name: "",
       friend_name: "",
       beers: [],
-      // password: "",
       fontLoaded: false,
     }
     this.onBuyBeers = this.onBuyBeers.bind(this);
