@@ -92,7 +92,6 @@ export default class Login extends Component {
 
 // Upon signup, Post route and navigate to Yourbeers page
   async onSignUp() {
-    // console.log(this.state);
     try {
       let response = await fetch('https://bottles99-api.herokuapp.com/users/new', {
           method: 'POST',

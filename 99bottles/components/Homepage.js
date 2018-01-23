@@ -5,8 +5,6 @@ import style from '../styles/stylecomp.js';
 import { Font } from 'expo';
 import resolveAssetSource from 'resolveAssetSource';
 import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
-// import Table from 'react-native-simple-table';
-// import DataFactory from '../mock/DataFactory';
 
 export default class HomePage extends React.Component
 {
